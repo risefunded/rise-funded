@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "rise-funded",
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

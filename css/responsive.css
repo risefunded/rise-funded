@@ -1,0 +1,472 @@
+/* =========================================================
+   RISE FUNDED — RESPONSIVE
+========================================================= */
+
+@media(max-width:950px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .mobile-menu{
+        display:flex;
+
+        width:40px;
+        height:40px;
+
+        align-items:center;
+        justify-content:center;
+
+        border-radius:10px;
+
+        background:#f3eff9;
+
+        color:var(--purple);
+
+        font-size:20px;
+
+        cursor:pointer;
+    }
+
+    .nav-actions .btn-outline,
+    .nav-actions .btn-primary{
+        display:none;
+    }
+
+    .mobile-auth-links{
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+
+        width:100%;
+        margin-top:15px;
+        padding-top:15px;
+
+        border-top:1px solid var(--line);
+    }
+
+    .mobile-auth-links .btn{
+        width:100%;
+        min-height:44px;
+        font-size:13px;
+    }
+
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding-top:125px;
+    }
+
+    body.promo-topbar-active .hero{
+        padding-top:170px;
+    }
+
+    .hero-copy{
+        text-align:center;
+    }
+
+    .hero p{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-buttons,
+    .trust-row{
+        justify-content:center;
+    }
+
+    .hero-visual{
+        min-height:430px;
+    }
+
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .stat:nth-child(2){
+        border-right:0;
+    }
+
+    .stat:nth-child(3),
+    .stat:nth-child(4){
+        border-top:1px solid var(--line);
+    }
+
+    .challenge-card{
+        grid-template-columns:1fr;
+    }
+
+    .guarantee-box{
+        grid-template-columns:1fr;
+    }
+
+    .steps{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .testimonial-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .payout-showcase{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .checkout-body{
+        grid-template-columns:1fr;
+    }
+
+    .checkout-left{
+        border-right:0;
+        border-bottom:1px solid var(--line);
+    }
+}
+
+
+@media(max-width:650px){
+
+    .container{
+        width:min(94%,1180px);
+    }
+
+    .nav-inner{
+        height:68px;
+    }
+
+    .logo{
+        font-size:16px;
+    }
+
+    .logo-mark{
+        width:34px;
+        height:34px;
+    }
+
+    .hero{
+        min-height:auto;
+
+        padding-top:115px;
+        padding-bottom:50px;
+    }
+
+    body.promo-topbar-active .hero{
+        padding-top:160px;
+    }
+
+    .hero h1{
+        font-size:45px;
+        letter-spacing:-2.7px;
+    }
+
+    .hero p{
+        font-size:13px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+    }
+
+    .hero-buttons .btn{
+        width:100%;
+    }
+
+    .trust-row{
+        flex-wrap:wrap;
+        gap:12px 18px;
+    }
+
+    .hero-visual{
+        min-height:340px;
+    }
+
+    .rf-core{
+        width:155px;
+        height:155px;
+    }
+
+    .rf-core img{
+        width:95px;
+        height:95px;
+    }
+
+    .orbit.one{
+        width:290px;
+        height:290px;
+    }
+
+    .orbit.two{
+        width:235px;
+        height:235px;
+    }
+
+    .orbit.three{
+        width:320px;
+        height:150px;
+    }
+
+    .float-card{
+        padding:10px 12px;
+    }
+
+    .float-card.a{
+        top:30px;
+        left:0;
+    }
+
+    .float-card.b{
+        top:75px;
+        right:0;
+    }
+
+    .float-card.c{
+        bottom:35px;
+        left:25px;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stat{
+        padding:20px 15px;
+    }
+
+    .stat strong{
+        font-size:18px;
+    }
+
+    section{
+        padding:70px 0;
+    }
+
+    .section-head{
+        margin-bottom:35px;
+    }
+
+    .section-head h2{
+        font-size:34px;
+    }
+
+    .plan-tabs{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+    }
+
+    .plan-tab{
+        width:100%;
+    }
+
+    .account-selector{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .account-btn{
+        padding:13px 5px;
+    }
+
+    .account-btn strong{
+        font-size:14px;
+    }
+
+    .challenge-card{
+        padding:20px;
+        gap:15px;
+    }
+
+    .challenge-info h3{
+        font-size:29px;
+    }
+
+    .price-row strong{
+        font-size:40px;
+    }
+
+    .rules{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .rule{
+        padding:14px;
+    }
+
+    .rule strong{
+        font-size:15px;
+    }
+
+    .payout-grid{
+        grid-template-columns:1fr;
+    }
+
+    .ondemand{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:22px;
+    }
+
+    .toggle-wrap{
+        width:100%;
+        justify-content:space-between;
+    }
+
+    .guarantee-box{
+        padding:35px 23px;
+    }
+
+    .guarantee-clock{
+        width:200px;
+        height:200px;
+    }
+
+    .clock-inner{
+        width:155px;
+        height:155px;
+    }
+
+    .clock-inner strong{
+        font-size:37px;
+    }
+
+    .steps{
+        grid-template-columns:1fr;
+    }
+
+    .testimonial-grid{
+        grid-template-columns:1fr;
+    }
+
+    .payout-showcase{
+        grid-template-columns:1fr;
+    }
+
+    .trader-payout-card{
+        min-height:225px;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .footer-links{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .checkout-overlay{
+        padding:0;
+    }
+
+    .checkout-shell{
+        margin:0;
+        min-height:100vh;
+
+        border-radius:0;
+    }
+
+    .checkout-header{
+        padding:17px 18px;
+    }
+
+    .checkout-left,
+    .checkout-right{
+        padding:25px 18px;
+    }
+
+    .checkout-title{
+        font-size:26px;
+    }
+
+    .payout-options{
+        grid-template-columns:1fr;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-group.full{
+        grid-column:auto;
+    }
+
+    .summary-total strong{
+        font-size:30px;
+    }
+
+    .discount-row{
+        flex-direction:column;
+    }
+
+    .discount-apply{
+        width:100%;
+    }
+
+
+    /* =====================================================
+       PROMO TOP BAR (Mobile)
+    ===================================================== */
+
+    .promo-topbar-inner{
+        padding:9px 42px 9px 14px;
+        font-size:11px;
+        gap:6px;
+    }
+
+    .promo-topbar-code{
+        font-size:10px;
+        padding:3px 9px;
+    }
+
+    .promo-topbar-discount{
+        font-size:9px;
+        padding:3px 8px;
+    }
+
+    .promo-topbar-close{
+        width:24px;
+        height:24px;
+        font-size:14px;
+    }
+
+    body.promo-topbar-active .navbar{
+        top:38px;
+    }
+
+
+    /* =====================================================
+       PROMO POPUP (Mobile)
+    ===================================================== */
+
+    .promo-popup{
+        padding:32px 22px 26px;
+        border-radius:20px;
+    }
+
+    .promo-popup-icon{
+        font-size:40px;
+        margin-bottom:12px;
+    }
+
+    .promo-popup-title{
+        font-size:20px;
+    }
+
+    .promo-popup-desc{
+        font-size:12px;
+        margin-bottom:18px;
+    }
+
+    .promo-popup-code{
+        font-size:22px;
+        letter-spacing:2px;
+    }
+
+    .promo-popup-close{
+        top:12px;
+        right:12px;
+        width:32px;
+        height:32px;
+        font-size:18px;
+    }
+}

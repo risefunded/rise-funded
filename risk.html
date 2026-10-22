@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Risk Disclosure — RISE FUNDED</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --purple: #5b2aa8;
+    --purple-2: #7442c8;
+    --purple-3: #9569df;
+    --navy: #102a56;
+    --navy-2: #1b4384;
+    --text: #111318;
+    --muted: #697080;
+    --white: #ffffff;
+    --soft: #f7f5fc;
+    --soft-2: #faf9fd;
+    --line: #e8e1f3;
+    --green: #20a86b;
+    --gold: #d7a83c;
+    --danger: #c53d4d;
+    --shadow: 0 20px 60px rgba(49, 31, 92, .10);
+    --shadow-2: 0 12px 35px rgba(49, 31, 92, .08);
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(116, 66, 200, .08), transparent 40%),
+        linear-gradient(180deg, #faf9fd 0%, #f4f0fa 100%);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a { text-decoration: none; color: inherit; }
+
+.navbar {
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255,255,255,.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-brand { display: flex; align-items: center; gap: 12px; }
+.nav-brand img { width: 42px; height: 42px; object-fit: contain; }
+
+.nav-brand-text { display: flex; flex-direction: column; line-height: 1; }
+.nav-brand-text strong { color: var(--navy); font-size: 16px; font-weight: 900; letter-spacing: 1px; }
+.nav-brand-text span { color: var(--purple); font-size: 10px; font-weight: 900; letter-spacing: 3px; margin-top: 5px; }
+
+.nav-back {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: white;
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 800;
+    transition: .2s;
+}
+.nav-back:hover { border-color: var(--purple); color: var(--purple); }
+
+.legal-main {
+    flex: 1;
+    padding: 70px 24px 80px;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.legal-hero {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--line);
+}
+
+.legal-kicker {
+    color: var(--danger);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.legal-title {
+    color: var(--purple);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+}
+
+.legal-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    background: white;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+}
+.legal-meta strong { color: var(--purple); font-weight: 900; }
+
+.warning-banner {
+    padding: 26px 30px;
+    border-radius: 20px;
+    background:
+        radial-gradient(circle at 90% 10%, rgba(197,61,77,.15), transparent 40%),
+        linear-gradient(135deg, #fef6f7, #fdf0f2);
+    border: 1px solid #f5cdd3;
+    margin-bottom: 30px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.warning-icon {
+    width: 54px;
+    height: 54px;
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: rgba(197,61,77,.12);
+    border: 1px solid rgba(197,61,77,.20);
+    font-size: 26px;
+}
+
+.warning-text { min-width: 0; }
+
+.warning-text h3 {
+    color: var(--danger);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: -.3px;
+    margin-bottom: 8px;
+}
+
+.warning-text p {
+    color: #7a2f38;
+    font-size: 13px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.warning-text p + p { margin-top: 10px; }
+
+.legal-content {
+    background: white;
+    padding: 50px 60px;
+    border-radius: 24px;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-2);
+}
+
+.legal-content p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.85;
+    margin-bottom: 18px;
+}
+
+.legal-content h2 {
+    color: var(--navy);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -.4px;
+    margin-top: 44px;
+    margin-bottom: 18px;
+    padding-top: 30px;
+    border-top: 1px solid var(--line);
+}
+
+.legal-content h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+}
+
+.legal-content h2 .section-number {
+    color: var(--purple);
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    margin-right: 10px;
+    opacity: .5;
+}
+
+.legal-content h3 {
+    color: var(--navy);
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: -.2px;
+    margin-top: 26px;
+    margin-bottom: 12px;
+}
+
+.legal-content ul,
+.legal-content ol {
+    margin: 0 0 18px 24px;
+    padding: 0;
+}
+
+.legal-content li {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.85;
+    margin-bottom: 8px;
+}
+
+.legal-content li strong,
+.legal-content strong {
+    color: var(--navy);
+    font-weight: 900;
+}
+
+.legal-content a {
+    color: var(--purple);
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+.legal-callout {
+    padding: 20px 24px;
+    border-radius: 14px;
+    background: var(--soft);
+    border-left: 4px solid var(--purple);
+    margin: 24px 0;
+}
+
+.legal-callout p {
+    margin: 0;
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.7;
+}
+
+.legal-callout.warning {
+    background: #fff8e6;
+    border-left-color: var(--gold);
+}
+
+.legal-callout.danger {
+    background: #fdf0f2;
+    border-left-color: var(--danger);
+}
+
+.risk-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin: 24px 0;
+}
+
+.risk-item {
+    padding: 18px 20px;
+    border-radius: 14px;
+    background: var(--soft);
+    border: 1px solid var(--line);
+    transition: .2s;
+}
+
+.risk-item:hover {
+    border-color: #d8c9ed;
+    transform: translateY(-2px);
+}
+
+.risk-item-icon {
+    font-size: 22px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.risk-item strong {
+    display: block;
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 900;
+    margin-bottom: 6px;
+}
+
+.risk-item p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.legal-contact {
+    margin-top: 50px;
+    padding: 36px 40px;
+    border-radius: 20px;
+    background:
+        radial-gradient(circle at 90% 10%, rgba(149,105,223,.20), transparent 35%),
+        linear-gradient(135deg, #101f43, #162f61 55%, #243f78);
+    color: white;
+    text-align: center;
+}
+
+.legal-contact h3 {
+    color: white;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 12px;
+}
+
+.legal-contact p {
+    color: #b8c4dc;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.legal-contact a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 26px;
+    border-radius: 12px;
+    background: white;
+    color: var(--purple);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: .3px;
+    transition: .2s;
+}
+.legal-contact a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,0,0,.20);
+}
+
+.legal-footer {
+    padding: 30px 40px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 600;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.legal-footer-links { display: flex; gap: 22px; }
+.legal-footer-links a:hover { color: var(--purple); }
+
+@media (max-width: 700px) {
+    .navbar { padding: 16px 20px; }
+    .nav-brand-text { display: none; }
+    .legal-main { padding: 50px 18px 60px; }
+    .legal-title { font-size: 32px; }
+    .legal-content { padding: 30px 24px; border-radius: 18px; }
+    .legal-content h2 { font-size: 20px; margin-top: 34px; padding-top: 24px; }
+    .legal-content h3 { font-size: 15px; }
+    .warning-banner { flex-direction: column; padding: 22px; }
+    .risk-grid { grid-template-columns: 1fr; }
+    .legal-contact { padding: 28px 24px; }
+    .legal-footer { flex-direction: column; text-align: center; padding: 26px 20px; }
+    .legal-footer-links { gap: 16px; flex-wrap: wrap; justify-content: center; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <a href="index.html" class="nav-brand">
+        <img src="assets/logo.svg" alt="RISE FUNDED">
+        <div class="nav-brand-text">
+            <strong>RISE</strong>
+            <span>FUNDED</span>
+        </div>
+    </a>
+
+    <a href="index.html" class="nav-back">← Back to Home</a>
+</nav>
+
+
+<!-- MAIN -->
+<main class="legal-main">
+
+    <div class="legal-hero">
+        <div class="legal-kicker">Important Notice</div>
+        <h1 class="legal-title">Risk Disclosure</h1>
+        <div class="legal-meta">
+            <span>Last Updated: <strong>January 2026</strong></span>
+        </div>
+    </div>
+
+
+    <div class="warning-banner">
+        <div class="warning-icon">⚠️</div>
+        <div class="warning-text">
+            <h3>Trading Involves Substantial Risk</h3>
+            <p>
+                Trading foreign exchange, contracts for difference, commodities,
+                indices, and cryptocurrencies carries a <strong>high level of risk</strong> and
+                may not be suitable for all investors.
+            </p>
+            <p>
+                You could sustain a loss of some or all of your initial investment and challenge
+                fee. You should not invest money that you cannot afford to lose. Past performance
+                is not indicative of future results.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="legal-content">
+
+        <h2><span class="section-number">01.</span>Introduction</h2>
+
+        <p>
+            This Risk Disclosure Statement ("Disclosure") is provided by
+            <strong>RISE FUNDED FZ-LLC</strong> to inform you of the significant risks
+            associated with trading financial instruments and participating in our evaluation
+            programs (the "Services").
+        </p>
+
+        <p>
+            By using the Services, you acknowledge that you have read, understood, and accepted
+            all the risks described in this Disclosure. If you do not fully understand or accept
+            these risks, you must immediately discontinue use of the Services.
+        </p>
+
+        <div class="legal-callout danger">
+            <p>
+                <strong>You may lose all funds paid to RISE FUNDED</strong>, including challenge
+                fees, and you may not be eligible for a Funded Account or payouts. Trading is not
+                a guaranteed path to profit.
+            </p>
+        </div>
+
+
+        <h2><span class="section-number">02.</span>General Trading Risks</h2>
+
+        <p>
+            Trading financial instruments involves a variety of risks. Below are the most
+            significant categories of risk you should be aware of before engaging in any trading
+            activity.
+        </p>
+
+        <div class="risk-grid">
+            <div class="risk-item">
+                <span class="risk-item-icon">📉</span>
+                <strong>Market Risk</strong>
+                <p>Prices can move rapidly against your position, resulting in losses that may exceed your expectations.</p>
+            </div>
+
+            <div class="risk-item">
+                <span class="risk-item-icon">⚡</span>
+                <strong>Leverage Risk</strong>
+                <p>Leverage amplifies both profits and losses. Small market movements can lead to significant losses.</p>
+            </div>
+
+            <div class="risk-item">
+                <span class="risk-item-icon">💧</span>
+                <strong>Liquidity Risk</strong>
+                <p>Markets may lack sufficient liquidity, making it difficult to open or close positions at desired prices.</p>
+            </div>
+
+            <div class="risk-item">
+                <span class="risk-item-icon">🌐</span>
+                <strong>Volatility Risk</strong>
+                <p>Market volatility may cause rapid price swings, resulting in stop-loss slippage or premature liquidations.</p>
+            </div>
+
+            <div class="risk-item">
+                <span class="risk-item-icon">🌙</span>
+                <strong>Gap Risk</strong>
+                <p>Markets can gap over weekends or news events, causing positions to open at prices significantly different from the last close.</p>
+            </div>
+
+            <div class="risk-item">
+                <span class="risk-item-icon">📰</span>
+                <strong>News Risk</strong>
+                <p>Economic news, geopolitical events, and central bank decisions can cause extreme volatility.</p>
+            </div>
+
+            <div class="risk-item">
+                <span class="risk-item-icon">💻</span>
+                <strong>Technical Risk</strong>
+                <p>Platform outages, connectivity issues, or software errors may prevent you from managing positions.</p>
+            </div>
+
+            <div class="risk-item">
+                <span class="risk-item-icon">💱</span>
+                <strong>Currency Risk</strong>
+                <p>Fluctuations in exchange rates may affect the value of your account and payouts.</p>
+            </div>
+        </div>
+
+
+        <h2><span class="section-number">03.</span>Leverage & Margin</h2>
+
+        <p>
+            Leverage allows you to control a large position with a relatively small amount of
+            capital. While leverage can amplify profits, it can equally amplify losses. A small
+            adverse price movement can result in the loss of your entire account balance.
+        </p>
+
+        <p>
+            You must understand that:
+        </p>
+
+        <ul>
+            <li>Leverage magnifies both profits and losses proportionally.</li>
+            <li>Using high leverage significantly increases the risk of rapid account depletion.</li>
+            <li>You may be required to deposit additional funds (margin calls) to maintain open positions.</li>
+            <li>Positions may be closed automatically (liquidated) if margin requirements are not met.</li>
+            <li>Trading on margin is not suitable for all investors.</li>
+        </ul>
+
+        <div class="legal-callout warning">
+            <p>
+                <strong>Never trade with money you cannot afford to lose.</strong> Leverage should
+                be used responsibly and only after a thorough understanding of its mechanics.
+            </p>
+        </div>
+
+
+        <h2><span class="section-number">04.</span>Evaluation Program Risks</h2>
+
+        <p>
+            RISE FUNDED provides evaluation programs to identify skilled traders.
+            Participating in these programs involves specific risks:
+        </p>
+
+        <h3>4.1 Challenge Fee Risk</h3>
+
+        <p>
+            Challenge fees are <strong>non-refundable</strong> if you fail to meet the challenge
+            requirements. You should only pay a challenge fee if you are fully prepared to accept
+            this loss.
+        </p>
+
+        <h3>4.2 Performance Risk</h3>
+
+        <p>
+            Passing the Challenge requires meeting specific profit targets while respecting
+            drawdown limits. There is no guarantee you will meet these requirements, even with
+            significant trading experience.
+        </p>
+
+        <h3>4.3 Rule Violation Risk</h3>
+
+        <p>
+            Breaching any Challenge rule, such as exceeding drawdown limits or inactivity, will
+            result in automatic failure and forfeiture of your Challenge fee.
+        </p>
+
+        <h3>4.4 Funded Account Risk</h3>
+
+        <p>
+            Even after passing the Challenge and receiving a Funded Account, the account can be
+            terminated if you breach any rules, including drawdown limits. In such cases, you
+            may lose access to the account and any unrealized profits.
+        </p>
+
+
+        <h2><span class="section-number">05.</span>Payout Risks</h2>
+
+        <p>
+            Payouts are subject to various conditions and risks:
+        </p>
+
+        <ul>
+            <li><strong>Approval Risk:</strong> Payouts are subject to review and approval by
+            RISE FUNDED. We reserve the right to delay or refuse payouts if we suspect fraud,
+            rule violation, or non-compliance.</li>
+
+            <li><strong>Processing Time:</strong> While we aim to process payouts within 24 hours,
+            delays may occur due to high volume, verification issues, or technical problems.</li>
+
+            <li><strong>Payment Method Risk:</strong> Payouts via cryptocurrency are subject to
+            blockchain network fees, confirmation delays, and volatility of the chosen asset.</li>
+
+            <li><strong>Currency Risk:</strong> Payouts are made in USD equivalent. If you receive
+            payouts in a different currency, exchange rate fluctuations may affect the final amount.</li>
+
+            <li><strong>Regulatory Risk:</strong> Payouts may be delayed or restricted due to
+            regulatory requirements or compliance checks in your jurisdiction.</li>
+        </ul>
+
+
+        <h2><span class="section-number">06.</span>Technology Risks</h2>
+
+        <p>
+            The Services rely on various technologies, including cloud hosting, databases, and
+            third-party trading platforms such as MetaTrader 5. These technologies are subject
+            to various risks:
+        </p>
+
+        <ul>
+            <li><strong>Service Interruption:</strong> Technical issues, maintenance, or outages
+            may temporarily prevent access to the Services.</li>
+
+            <li><strong>Data Loss:</strong> While we take precautions, data loss is possible due
+            to hardware failures, cyberattacks, or human error.</li>
+
+            <li><strong>Cybersecurity:</strong> Unauthorized access, hacking, or phishing attacks
+            may compromise your account or data.</li>
+
+            <li><strong>Third-Party Failures:</strong> We rely on third-party platforms such as
+            MetaTrader and are not responsible for their downtime or errors.</li>
+        </ul>
+
+
+        <h2><span class="section-number">07.</span>Regulatory & Legal Risks</h2>
+
+        <p>
+            The legal and regulatory environment for trading and proprietary trading evaluation
+            services is complex and evolving. You should be aware of:
+        </p>
+
+        <ul>
+            <li><strong>Jurisdictional Restrictions:</strong> The Services may be restricted or
+            prohibited in certain jurisdictions. It is your responsibility to ensure compliance
+            with local laws.</li>
+
+            <li><strong>Tax Obligations:</strong> You are solely responsible for any tax
+            obligations arising from your participation in the Services, including payouts.
+            RISE FUNDED does not provide tax advice.</li>
+
+            <li><strong>Regulatory Changes:</strong> Changes in laws or regulations may affect
+            the availability or terms of the Services.</li>
+
+            <li><strong>Verification Requirements:</strong> We are legally required to verify your
+            identity and may be required to report suspicious activity to authorities.</li>
+        </ul>
+
+
+        <h2><span class="section-number">08.</span>Psychological Risks</h2>
+
+        <p>
+            Trading involves psychological challenges that can significantly impact your
+            performance and well-being:
+        </p>
+
+        <ul>
+            <li><strong>Emotional Trading:</strong> Fear, greed, and revenge trading can lead to
+            poor decisions and significant losses.</li>
+
+            <li><strong>Overtrading:</strong> The pressure to reach profit targets may lead to
+            excessive trading and increased risk.</li>
+
+            <li><strong>Stress and Burnout:</strong> Constant monitoring of positions and
+            performance can lead to stress, anxiety, and burnout.</li>
+
+            <li><strong>Loss Aversion:</strong> The psychological impact of losses can affect
+            judgment and lead to further poor decisions.</li>
+        </ul>
+
+        <div class="legal-callout">
+            <p>
+                If you experience significant stress or psychological distress related to trading,
+                we strongly encourage you to seek professional help or take a break from trading.
+            </p>
+        </div>
+
+
+        <h2><span class="section-number">09.</span>Third-Party Risks</h2>
+
+        <p>
+            The Services may integrate with or rely on third-party services, including:
+        </p>
+
+        <ul>
+            <li><strong>Trading Platforms:</strong> MetaTrader 5 or other trading terminals.</li>
+            <li><strong>Payment Processors:</strong> Cryptocurrency networks and payment gateways.</li>
+            <li><strong>Verification Providers:</strong> Identity verification services.</li>
+            <li><strong>Cloud Infrastructure:</strong> Hosting and database providers.</li>
+        </ul>
+
+        <p>
+            We are not responsible for the actions, errors, or failures of third-party services.
+            You should review their terms and risk disclosures separately.
+        </p>
+
+
+        <h2><span class="section-number">10.</span>No Investment Advice</h2>
+
+        <p>
+            <strong>RISE FUNDED does not provide investment advice, trading signals, or
+            recommendations.</strong> All information provided through the Services is for
+            educational and informational purposes only and should not be construed as
+            investment advice.
+        </p>
+
+        <p>
+            You are solely responsible for your trading decisions and should conduct your own
+            research and analysis before making any trading decisions.
+        </p>
+
+
+        <h2><span class="section-number">11.</span>Suitability Assessment</h2>
+
+        <p>
+            Before participating in the Services, you should carefully consider:
+        </p>
+
+        <ul>
+            <li>Your financial situation, including income, savings, and existing obligations.</li>
+            <li>Your trading experience and knowledge of financial markets.</li>
+            <li>Your risk tolerance and ability to withstand significant losses.</li>
+            <li>Your investment objectives and time horizon.</li>
+        </ul>
+
+        <p>
+            If you are uncertain whether the Services are suitable for you, we strongly recommend
+            seeking advice from a qualified financial advisor.
+        </p>
+
+
+        <h2><span class="section-number">12.</span>Past Performance Disclaimer</h2>
+
+        <p>
+            <strong>Past performance is not indicative of future results.</strong> Any historical
+            performance data, examples, or testimonials on our website are for illustrative
+            purposes only and do not guarantee future outcomes.
+        </p>
+
+        <p>
+            The trading environment is constantly changing. Strategies, market conditions, and
+            personal circumstances can all affect trading performance.
+        </p>
+
+
+        <h2><span class="section-number">13.</span>No Guarantee of Profit</h2>
+
+        <p>
+            <strong>RISE FUNDED makes no guarantee of profit.</strong> Trading is inherently
+            risky, and there is no guarantee that you will:
+        </p>
+
+        <ul>
+            <li>Pass the Challenge and receive a Funded Account.</li>
+            <li>Generate profits on a Funded Account.</li>
+            <li>Be eligible for payouts.</li>
+            <li>Recover your Challenge fee.</li>
+        </ul>
+
+        <p>
+            You should only participate in the Services if you are prepared to accept these
+            risks and the possibility of financial loss.
+        </p>
+
+
+        <h2><span class="section-number">14.</span>Acknowledgment</h2>
+
+        <p>
+            By using the Services, you acknowledge and confirm that:
+        </p>
+
+        <ul>
+            <li>You have read and understood this Risk Disclosure in its entirety.</li>
+            <li>You accept all the risks described in this document.</li>
+            <li>You are solely responsible for your trading decisions and their consequences.</li>
+            <li>You have the financial ability to bear the loss of your Challenge fee.</li>
+            <li>You are not relying on any guarantee of profit from RISE FUNDED.</li>
+            <li>You have sought independent advice if necessary.</li>
+        </ul>
+
+        <div class="legal-callout danger">
+            <p>
+                <strong>Do not participate in the Services if you do not fully understand and
+                accept these risks.</strong> Trading is not suitable for everyone.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="legal-contact">
+        <h3>Need more information?</h3>
+        <p>
+            If you have questions about this Risk Disclosure or need further clarification,
+            please contact our support team.
+        </p>
+        <a href="contact.html">Contact Support →</a>
+    </div>
+
+</main>
+
+
+<footer class="legal-footer">
+    <span>© 2026 RISE FUNDED FZ-LLC — All rights reserved.</span>
+
+    <div class="legal-footer-links">
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="risk.html">Risk Disclosure</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</footer>
+
+</body>
+</html>

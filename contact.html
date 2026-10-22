@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact & Support — RISE FUNDED</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+<style>
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --purple: #5b2aa8;
+    --purple-2: #7442c8;
+    --purple-3: #9569df;
+
+    --navy: #102a56;
+    --navy-2: #1b4384;
+
+    --text: #111318;
+    --muted: #697080;
+
+    --white: #ffffff;
+    --soft: #f7f5fc;
+    --soft-2: #faf9fd;
+
+    --line: #e8e1f3;
+
+    --green: #20a86b;
+    --gold: #d7a83c;
+    --danger: #c53d4d;
+
+    --shadow: 0 20px 60px rgba(49, 31, 92, .10);
+    --shadow-2: 0 12px 35px rgba(49, 31, 92, .08);
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(116, 66, 200, .08), transparent 40%),
+        linear-gradient(180deg, #faf9fd 0%, #f4f0fa 100%);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+    padding: 20px 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgba(255,255,255,.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border-bottom: 1px solid var(--line);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-brand img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+
+.nav-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.nav-brand-text strong {
+    color: var(--navy);
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.nav-brand-text span {
+    color: var(--purple);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    margin-top: 5px;
+}
+
+.nav-back {
+    padding: 10px 20px;
+
+    border-radius: 10px;
+
+    border: 1px solid var(--line);
+
+    background: white;
+
+    color: var(--navy);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    transition: .2s;
+}
+
+.nav-back:hover {
+    border-color: var(--purple);
+    color: var(--purple);
+}
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.contact-main {
+    flex: 1;
+
+    padding: 70px 24px 80px;
+
+    max-width: 1200px;
+    margin: 0 auto;
+
+    width: 100%;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.contact-hero {
+    text-align: center;
+
+    margin-bottom: 60px;
+}
+
+.contact-kicker {
+    color: var(--gold);
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: 6px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 14px;
+}
+
+.contact-title {
+    color: var(--purple);
+
+    font-family: "Playfair Display", Georgia, serif;
+
+    font-size: 56px;
+    font-weight: 900;
+
+    letter-spacing: -1.5px;
+
+    line-height: 1.1;
+
+    margin-bottom: 16px;
+}
+
+.contact-subtitle {
+    color: var(--muted);
+
+    font-size: 15px;
+    font-weight: 500;
+
+    line-height: 1.7;
+
+    max-width: 560px;
+
+    margin: 0 auto;
+}
+
+/* =========================================================
+   CONTACT CARDS
+========================================================= */
+
+.contact-cards {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 22px;
+
+    margin-bottom: 60px;
+}
+
+.contact-card {
+    padding: 34px 28px;
+
+    border-radius: 22px;
+
+    background: white;
+
+    border: 1px solid var(--line);
+
+    box-shadow: var(--shadow-2);
+
+    text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition: .25s;
+}
+
+.contact-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+    border-color: #d8c9ed;
+}
+
+.contact-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--purple),
+            var(--gold),
+            var(--purple)
+        );
+}
+
+.contact-icon {
+    width: 62px;
+    height: 62px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f0e8fb,
+            #e8ddf9
+        );
+
+    font-size: 26px;
+
+    margin-bottom: 18px;
+}
+
+.contact-card h3 {
+    color: var(--navy);
+
+    font-family: "Playfair Display", Georgia, serif;
+
+    font-size: 20px;
+    font-weight: 900;
+
+    margin-bottom: 10px;
+}
+
+.contact-card p {
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    margin-bottom: 16px;
+}
+
+.contact-card-value {
+    display: inline-block;
+
+    padding: 10px 18px;
+
+    border-radius: 10px;
+
+    background: var(--soft);
+
+    border: 1px solid var(--line);
+
+    color: var(--purple);
+
+    font-size: 12px;
+    font-weight: 900;
+
+    font-family: "SF Mono", Monaco, monospace;
+
+    letter-spacing: .3px;
+
+    word-break: break-all;
+
+    transition: .2s;
+}
+
+.contact-card-value:hover {
+    background: var(--purple);
+    color: white;
+    border-color: var(--purple);
+}
+
+/* =========================================================
+   SUPPORT CTA
+========================================================= */
+
+.support-cta {
+    padding: 50px 40px;
+
+    border-radius: 26px;
+
+    background:
+        radial-gradient(circle at 90% 10%, rgba(149,105,223,.24), transparent 35%),
+        linear-gradient(
+            135deg,
+            #101f43,
+            #162f61 55%,
+            #243f78
+        );
+
+    color: white;
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow: 0 25px 60px rgba(16,42,86,.25);
+
+    margin-bottom: 60px;
+
+    text-align: center;
+}
+
+.support-cta::before {
+    content: "?";
+
+    position: absolute;
+
+    right: -30px;
+    bottom: -90px;
+
+    font-size: 240px;
+    font-weight: 900;
+
+    color: rgba(255,255,255,.03);
+
+    pointer-events: none;
+
+    line-height: 1;
+}
+
+.support-cta-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.support-cta-icon {
+    width: 70px;
+    height: 70px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.12);
+
+    border: 1px solid rgba(255,255,255,.15);
+
+    font-size: 30px;
+
+    margin-bottom: 20px;
+}
+
+.support-cta h2 {
+    font-family: "Playfair Display", Georgia, serif;
+
+    font-size: 34px;
+    font-weight: 900;
+
+    letter-spacing: -.8px;
+
+    margin-bottom: 14px;
+}
+
+.support-cta p {
+    color: #b8c4dc;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    margin-bottom: 26px;
+}
+
+.support-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 15px 32px;
+
+    border-radius: 14px;
+
+    background: white;
+
+    color: var(--purple);
+
+    font-size: 13px;
+    font-weight: 900;
+
+    letter-spacing: .5px;
+
+    transition: .2s;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.20);
+}
+
+.support-cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0,0,0,.30);
+}
+
+.support-cta-btn-arrow {
+    font-size: 16px;
+}
+
+/* =========================================================
+   HEADQUARTERS
+========================================================= */
+
+.hq-section {
+    margin-bottom: 60px;
+}
+
+.hq-card {
+    padding: 40px;
+
+    border-radius: 22px;
+
+    background: white;
+
+    border: 1px solid var(--line);
+
+    box-shadow: var(--shadow-2);
+
+    display: grid;
+
+    grid-template-columns: auto 1fr;
+
+    gap: 32px;
+
+    align-items: center;
+}
+
+.hq-icon {
+    width: 90px;
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            var(--purple-2)
+        );
+
+    color: white;
+
+    font-size: 40px;
+
+    box-shadow: 0 15px 35px rgba(91,42,168,.25);
+}
+
+.hq-info {
+    min-width: 0;
+}
+
+.hq-kicker {
+    color: var(--gold);
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 10px;
+}
+
+.hq-info h3 {
+    color: var(--navy);
+
+    font-family: "Playfair Display", Georgia, serif;
+
+    font-size: 24px;
+    font-weight: 900;
+
+    letter-spacing: -.5px;
+
+    margin-bottom: 14px;
+}
+
+.hq-address {
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.hq-address span {
+    color: var(--muted);
+
+    font-size: 13px;
+    font-weight: 500;
+
+    line-height: 1.6;
+}
+
+.hq-address strong {
+    color: var(--navy);
+    font-weight: 900;
+}
+
+/* =========================================================
+   QUICK FAQ
+========================================================= */
+
+.faq-quick-section {
+    margin-bottom: 40px;
+}
+
+.faq-quick-header {
+    text-align: center;
+
+    margin-bottom: 34px;
+}
+
+.faq-quick-header .contact-kicker {
+    margin-bottom: 10px;
+}
+
+.faq-quick-header h2 {
+    color: var(--purple);
+
+    font-family: "Playfair Display", Georgia, serif;
+
+    font-size: 34px;
+    font-weight: 900;
+
+    letter-spacing: -.8px;
+}
+
+.faq-quick-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+.faq-quick-item {
+    padding: 26px 24px;
+
+    border-radius: 18px;
+
+    background: white;
+
+    border: 1px solid var(--line);
+
+    box-shadow: var(--shadow-2);
+
+    transition: .25s;
+}
+
+.faq-quick-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.faq-quick-number {
+    display: inline-block;
+
+    color: var(--gold);
+
+    font-family: "Playfair Display", Georgia, serif;
+
+    font-size: 22px;
+    font-weight: 900;
+
+    margin-bottom: 12px;
+}
+
+.faq-quick-item h4 {
+    color: var(--navy);
+
+    font-size: 14px;
+    font-weight: 900;
+
+    letter-spacing: -.2px;
+
+    margin-bottom: 10px;
+}
+
+.faq-quick-item p {
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.contact-footer {
+    padding: 30px 40px;
+
+    border-top: 1px solid var(--line);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: var(--muted);
+
+    font-size: 11px;
+    font-weight: 600;
+
+    gap: 16px;
+
+    flex-wrap: wrap;
+}
+
+.contact-footer-links {
+    display: flex;
+    gap: 22px;
+}
+
+.contact-footer-links a:hover {
+    color: var(--purple);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+    .contact-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .faq-quick-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hq-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hq-icon {
+        margin: 0 auto;
+    }
+
+    .hq-address {
+        align-items: center;
+    }
+}
+
+@media (max-width: 700px) {
+    .navbar {
+        padding: 16px 20px;
+    }
+
+    .nav-brand-text {
+        display: none;
+    }
+
+    .contact-main {
+        padding: 50px 18px 60px;
+    }
+
+    .contact-title {
+        font-size: 38px;
+    }
+
+    .support-cta {
+        padding: 40px 26px;
+    }
+
+    .support-cta h2 {
+        font-size: 26px;
+    }
+
+    .hq-card {
+        padding: 30px 24px;
+    }
+
+    .faq-quick-header h2 {
+        font-size: 26px;
+    }
+
+    .contact-footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 26px 20px;
+    }
+
+    .contact-footer-links {
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<nav class="navbar">
+    <a href="index.html" class="nav-brand">
+        <img src="assets/logo.svg" alt="RISE FUNDED">
+        <div class="nav-brand-text">
+            <strong>RISE</strong>
+            <span>FUNDED</span>
+        </div>
+    </a>
+
+    <a href="index.html" class="nav-back">← Back to Home</a>
+</nav>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="contact-main">
+
+    <!-- HERO -->
+    <div class="contact-hero">
+        <div class="contact-kicker">Get In Touch</div>
+        <h1 class="contact-title">Contact & Support</h1>
+        <p class="contact-subtitle">
+            Our team is here to help you rise. Choose the channel that works best for you —
+            we typically respond in under 15 minutes.
+        </p>
+    </div>
+
+
+    <!-- CONTACT CARDS -->
+    <div class="contact-cards">
+
+        <!-- EMAIL -->
+        <div class="contact-card">
+            <div class="contact-icon">📧</div>
+            <h3>Email Support</h3>
+            <p>Best for detailed questions, documentation, and formal requests.</p>
+            <a href="mailto:risefunded.support@gmail.com" class="contact-card-value">
+                risefunded.support@gmail.com
+            </a>
+        </div>
+
+        <!-- TELEGRAM -->
+        <div class="contact-card">
+            <div class="contact-icon">💬</div>
+            <h3>Telegram Bot</h3>
+            <p>Instant responses, updates, and quick questions through our official bot.</p>
+            <a href="https://t.me/RiseFundedBot" target="_blank" rel="noopener" class="contact-card-value">
+                @RiseFundedBot
+            </a>
+        </div>
+
+        <!-- RESPONSE TIME -->
+        <div class="contact-card">
+            <div class="contact-icon">⏰</div>
+            <h3>Response Time</h3>
+            <p>We pride ourselves on fast, human responses — no waiting for hours.</p>
+            <span class="contact-card-value">Under 15 min</span>
+        </div>
+
+    </div>
+
+
+    <!-- SUPPORT CTA -->
+    <div class="support-cta">
+        <div class="support-cta-content">
+
+            <div class="support-cta-icon">🎫</div>
+
+            <h2>Support Ticket System</h2>
+
+            <p>
+                Log in to your dashboard and create a support ticket. Track your conversations,
+                share files, and get a full history of every interaction — all in one place.
+            </p>
+
+            <a href="dashboard/dashboard.html#support" class="support-cta-btn">
+                Open Support Ticket
+                <span class="support-cta-btn-arrow">→</span>
+            </a>
+
+        </div>
+    </div>
+
+
+    <!-- HEADQUARTERS -->
+    <section class="hq-section">
+        <div class="hq-card">
+
+            <div class="hq-icon">📍</div>
+
+            <div class="hq-info">
+                <div class="hq-kicker">Headquarters</div>
+
+                <h3>RISE FUNDED FZ-LLC</h3>
+
+                <div class="hq-address">
+                    <span><strong>Meydan Grandstand</strong> — 6th Floor</span>
+                    <span>Al Sheikh Zayed Road</span>
+                    <span>Meydan, Dubai</span>
+                    <span>United Arab Emirates</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- QUICK FAQ -->
+    <section class="faq-quick-section">
+
+        <div class="faq-quick-header">
+            <div class="contact-kicker">Quick Answers</div>
+            <h2>Frequently Asked</h2>
+        </div>
+
+        <div class="faq-quick-grid">
+
+            <div class="faq-quick-item">
+                <span class="faq-quick-number">01</span>
+                <h4>How do I contact support?</h4>
+                <p>
+                    The fastest way is through the <strong>dashboard ticket system</strong>.
+                    You can also reach us by email or through our Telegram bot.
+                </p>
+            </div>
+
+            <div class="faq-quick-item">
+                <span class="faq-quick-number">02</span>
+                <h4>How fast do you respond?</h4>
+                <p>
+                    Most tickets receive a response in <strong>under 15 minutes</strong>.
+                    Complex issues may take slightly longer, but we'll keep you updated.
+                </p>
+            </div>
+
+            <div class="faq-quick-item">
+                <span class="faq-quick-number">03</span>
+                <h4>What if I don't have an account?</h4>
+                <p>
+                    You can still email us at <strong>risefunded.support@gmail.com</strong>
+                    or message our bot. We respond to everyone.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="contact-footer">
+    <span>© 2026 RISE FUNDED FZ-LLC — All rights reserved.</span>
+
+    <div class="contact-footer-links">
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="risk.html">Risk Disclosure</a>
+        <a href="index.html#faq">FAQ</a>
+    </div>
+</footer>
+
+
+</body>
+</html>

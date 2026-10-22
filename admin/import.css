@@ -1,0 +1,572 @@
+/* =========================================================
+   RISE FUNDED — IMPORT PAGE
+========================================================= */
+
+.import-wrapper{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.import-card{
+    padding:26px;
+
+    border-radius:18px;
+
+    background:white;
+    border:1px solid var(--line);
+
+    box-shadow:var(--shadow2);
+}
+
+.import-card-header{
+    padding-bottom:18px;
+    margin-bottom:22px;
+
+    border-bottom:1px solid var(--line);
+}
+
+.import-step{
+    color:var(--purple);
+
+    font-size:10px;
+    font-weight:900;
+
+    letter-spacing:1.4px;
+
+    margin-bottom:5px;
+}
+
+.import-card-header h3{
+    color:var(--navy);
+    font-size:18px;
+    letter-spacing:-.4px;
+}
+
+
+/* =========================================================
+   FIELD
+========================================================= */
+
+.import-field{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.import-field label{
+    color:#626978;
+
+    font-size:11px;
+    font-weight:800;
+
+    letter-spacing:.3px;
+
+    text-transform:uppercase;
+}
+
+.import-field select{
+    width:100%;
+    height:48px;
+
+    padding:0 14px;
+
+    border-radius:12px;
+
+    border:1px solid var(--line);
+
+    background:white;
+    color:var(--navy);
+
+    font-family:inherit;
+    font-size:13px;
+
+    outline:none;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.import-field select:focus{
+    border-color:var(--purple2);
+    box-shadow:0 0 0 4px rgba(116,66,200,.08);
+}
+
+
+/* =========================================================
+   UPLOAD AREA
+========================================================= */
+
+.upload-area{
+    padding:40px 24px;
+
+    border-radius:16px;
+
+    border:2px dashed var(--line);
+
+    background:
+        linear-gradient(
+            135deg,
+            #faf7ff,
+            #f7f9fd
+        );
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    gap:8px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.upload-area:hover{
+    border-color:var(--purple3);
+    background:
+        linear-gradient(
+            135deg,
+            #f7f0ff,
+            #f0f4fc
+        );
+}
+
+.upload-area.dragover{
+    border-color:var(--purple2);
+    background:
+        linear-gradient(
+            135deg,
+            #f0e8fb,
+            #eef2fa
+        );
+    transform:scale(1.01);
+}
+
+.upload-icon{
+    font-size:48px;
+    margin-bottom:6px;
+}
+
+.upload-area strong{
+    color:var(--navy);
+    font-size:14px;
+    font-weight:800;
+}
+
+.upload-area > span{
+    color:var(--muted);
+    font-size:11px;
+}
+
+.upload-btn{
+    padding:11px 22px;
+
+    margin-top:8px;
+
+    border-radius:11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple2),
+            var(--purple)
+        );
+
+    color:white;
+
+    font-size:12px;
+    font-weight:900;
+
+    cursor:pointer;
+
+    box-shadow:0 8px 20px rgba(91,42,168,.22);
+
+    transition:.2s;
+}
+
+.upload-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 26px rgba(91,42,168,.30);
+}
+
+.upload-note{
+    margin-top:10px;
+
+    color:#979ca8;
+    font-size:10px;
+
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   FILE INFO
+========================================================= */
+
+.file-info{
+    margin-top:16px;
+
+    padding:14px 16px;
+
+    border-radius:14px;
+
+    background:#faf7ff;
+    border:1px solid #e5dbf2;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.file-icon{
+    width:42px;
+    height:42px;
+
+    flex:none;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:11px;
+
+    background:white;
+    color:var(--purple);
+
+    font-size:20px;
+
+    border:1px solid var(--line);
+}
+
+.file-details{
+    flex:1;
+    min-width:0;
+}
+
+.file-details strong{
+    display:block;
+
+    color:var(--navy);
+    font-size:13px;
+    font-weight:800;
+
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.file-details span{
+    display:block;
+
+    color:var(--muted);
+    font-size:11px;
+
+    margin-top:3px;
+}
+
+.file-remove{
+    width:34px;
+    height:34px;
+
+    flex:none;
+
+    display:grid;
+    place-items:center;
+
+    border:0;
+    border-radius:9px;
+
+    background:#fdf0f2;
+    color:var(--danger);
+
+    font-size:18px;
+    font-weight:900;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.file-remove:hover{
+    background:var(--danger);
+    color:white;
+}
+
+
+/* =========================================================
+   IMPORT SUMMARY
+========================================================= */
+
+.import-summary{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:14px;
+
+    margin-bottom:24px;
+}
+
+.import-stat{
+    padding:18px;
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #faf7ff,
+            #f7f9fd
+        );
+
+    border:1px solid #e5dbf2;
+}
+
+.import-stat span{
+    display:block;
+
+    color:#8a909d;
+    font-size:10px;
+    font-weight:800;
+
+    letter-spacing:.4px;
+
+    margin-bottom:8px;
+
+    text-transform:uppercase;
+}
+
+.import-stat strong{
+    display:block;
+
+    color:var(--navy);
+    font-size:20px;
+    font-weight:900;
+
+    letter-spacing:-.5px;
+}
+
+.import-stat.positive strong{
+    color:var(--success);
+}
+
+.import-stat.negative strong{
+    color:var(--danger);
+}
+
+
+/* =========================================================
+   DAILY LIST
+========================================================= */
+
+.import-section-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:14px;
+
+    color:var(--navy);
+    font-size:14px;
+    font-weight:900;
+}
+
+.import-toggle{
+    padding:7px 14px;
+
+    border-radius:9px;
+
+    background:#f4f0fa;
+    color:var(--purple);
+
+    font-size:10px;
+    font-weight:900;
+    font-family:inherit;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.import-toggle:hover{
+    background:var(--purple);
+    color:white;
+}
+
+.import-daily-list{
+    display:flex;
+    flex-direction:column;
+
+    gap:8px;
+
+    max-height:400px;
+
+    overflow-y:auto;
+}
+
+.import-daily-item{
+    padding:14px 16px;
+
+    border-radius:12px;
+
+    background:white;
+    border:1px solid var(--line);
+
+    display:grid;
+    grid-template-columns:1fr 100px 80px 100px;
+
+    gap:14px;
+
+    align-items:center;
+
+    transition:.2s;
+}
+
+.import-daily-item:hover{
+    border-color:#d8c9ed;
+}
+
+.import-daily-date{
+    color:var(--navy);
+    font-size:13px;
+    font-weight:800;
+}
+
+.import-daily-trades{
+    color:var(--muted);
+    font-size:11px;
+    font-weight:700;
+    text-align:center;
+}
+
+.import-daily-pnl{
+    font-size:13px;
+    font-weight:900;
+    text-align:right;
+}
+
+.import-daily-pnl.positive{
+    color:var(--success);
+}
+
+.import-daily-pnl.negative{
+    color:var(--danger);
+}
+
+.import-daily-balance{
+    color:var(--navy);
+    font-size:13px;
+    font-weight:900;
+    text-align:right;
+    font-family:"SF Mono",Monaco,monospace;
+}
+
+
+/* =========================================================
+   IMPORT ACTIONS
+========================================================= */
+
+.import-actions{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:16px;
+
+    margin-top:24px;
+    padding-top:22px;
+
+    border-top:1px solid var(--line);
+}
+
+.import-status{
+    font-size:12px;
+    font-weight:800;
+
+    color:var(--success);
+
+    opacity:0;
+
+    transition:.3s;
+}
+
+.import-status.show{
+    opacity:1;
+}
+
+.import-status.error{
+    color:var(--danger);
+}
+
+.import-buttons{
+    display:flex;
+    gap:10px;
+}
+
+
+/* =========================================================
+   ERROR BOX
+========================================================= */
+
+.import-error-box{
+    padding:14px 16px;
+
+    border-radius:12px;
+
+    background:#fdf0f2;
+    border:1px solid #f5cdd3;
+
+    color:var(--danger);
+
+    font-size:12px;
+    font-weight:700;
+
+    line-height:1.7;
+
+    word-break:break-word;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+    .import-summary{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:650px){
+
+    .import-card{
+        padding:20px;
+    }
+
+    .import-summary{
+        grid-template-columns:1fr;
+    }
+
+    .import-daily-item{
+        grid-template-columns:1fr 1fr;
+        gap:8px;
+    }
+
+    .import-actions{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .import-buttons{
+        width:100%;
+    }
+
+    .import-buttons .btn-cancel,
+    .import-buttons .btn-approve{
+        flex:1;
+    }
+}

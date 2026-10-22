@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Payment — RISE FUNDED</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="payment.css">
+
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+    <header class="top-header">
+        <a href="../index.html" class="back-link">
+            <span>←</span> Back
+        </a>
+
+        <div class="brand">
+            <img
+                src="../assets/logo.svg"
+                alt="RISE FUNDED"
+                class="brand-mark"
+            />
+            <div class="brand-text">
+                RISE <span>FUNDED</span>
+            </div>
+        </div>
+
+        <div class="secure-badge">
+            🔒 Secure
+        </div>
+    </header>
+
+
+    <!-- LOADING -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p>Loading your order...</p>
+    </div>
+
+
+    <!-- MAIN -->
+    <main class="container" id="mainContent" style="display:none">
+
+        <!-- ORDER SUMMARY -->
+        <div class="order-summary">
+
+            <div class="summary-head">
+                <div>
+                    <div class="summary-kicker">ORDER SUMMARY</div>
+                    <h1 id="orderIdTitle">RF-000000</h1>
+                </div>
+
+                <div class="summary-total">
+                    <span>Amount Due</span>
+                    <strong id="totalAmount">$34</strong>
+                </div>
+            </div>
+
+            <div class="summary-grid">
+
+                <div class="summary-item">
+                    <span>Plan</span>
+                    <strong id="summaryPlan">1 STEP</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Account Size</span>
+                    <strong id="summaryAccount">$5,000</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Payout Cycle</span>
+                    <strong id="summaryPayout">Weekly</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Profit Split</span>
+                    <strong id="summarySplit">65%</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- NETWORK SELECTOR -->
+        <div class="section">
+            <div class="section-head">
+                <div class="section-kicker">STEP 1</div>
+                <h2>Choose your network</h2>
+                <p>Select the blockchain network you want to send USDT through.</p>
+            </div>
+
+            <div class="network-grid" id="networkGrid">
+
+                <!-- TRC20 -->
+                <label class="network-card" data-network="USDT_TRC20">
+                    <input type="radio" name="network" value="USDT_TRC20" checked>
+                    <div class="network-logo tron">TRX</div>
+                    <div class="network-info">
+                        <strong>USDT TRC20</strong>
+                        <span>Tron Network • Low fees (~$1)</span>
+                    </div>
+                    <div class="network-tag">Recommended</div>
+                </label>
+
+                <!-- BEP20 -->
+                <label class="network-card" data-network="USDT_BEP20">
+                    <input type="radio" name="network" value="USDT_BEP20">
+                    <div class="network-logo bnb">BNB</div>
+                    <div class="network-info">
+                        <strong>USDT BEP20</strong>
+                        <span>BNB Smart Chain • Low fees</span>
+                    </div>
+                </label>
+
+                <!-- ERC20 -->
+                <label class="network-card" data-network="USDT_ERC20">
+                    <input type="radio" name="network" value="USDT_ERC20">
+                    <div class="network-logo eth">ETH</div>
+                    <div class="network-info">
+                        <strong>USDT ERC20</strong>
+                        <span>Ethereum • Higher fees</span>
+                    </div>
+                </label>
+
+            </div>
+        </div>
+
+
+        <!-- WALLET & AMOUNT -->
+        <div class="section">
+
+            <div class="section-head">
+                <div class="section-kicker">STEP 2</div>
+                <h2>Send the exact amount</h2>
+                <p>Send USDT to the address below. Use only the selected network.</p>
+            </div>
+
+
+            <div class="payment-box">
+
+                <div class="payment-field">
+                    <label>Network</label>
+                    <div class="value-row">
+                        <strong id="selectedNetworkName">Tron (TRC20)</strong>
+                        <span class="coin-badge" id="selectedCoinBadge">USDT</span>
+                    </div>
+                </div>
+
+
+                <div class="payment-field">
+                    <label>Amount to send</label>
+                    <div class="value-row amount-row">
+                        <strong id="cryptoAmount">34 USDT</strong>
+                        <button type="button" class="copy-btn" data-copy="cryptoAmount">
+                            Copy
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="payment-field">
+                    <label>Wallet Address</label>
+                    <div class="value-row address-row">
+                        <code id="walletAddress">
+                            0x0000000000000000000000000000000000000000
+                        </code>
+                        <button type="button" class="copy-btn" data-copy="walletAddress">
+                            Copy
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="warning-box">
+                    ⚠️ Send only <strong id="warningCoin">USDT</strong> on
+                    <strong id="warningNetwork">TRC20</strong> network.
+                    Sending on the wrong network will result in loss of funds.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- TXID FORM -->
+        <div class="section">
+
+            <div class="section-head">
+                <div class="section-kicker">STEP 3</div>
+                <h2>Submit your transaction</h2>
+                <p>After sending, paste your transaction hash (TxID) below.</p>
+            </div>
+
+            <div class="payment-box">
+
+                <div class="payment-field">
+                    <label for="txidInput">
+                        Transaction Hash (TxID)
+                    </label>
+
+                    <div class="txid-row">
+                        <input
+                            type="text"
+                            id="txidInput"
+                            placeholder="Paste your transaction hash here..."
+                            autocomplete="off"
+                            spellcheck="false"
+                        >
+                    </div>
+
+                    <div class="txid-hint">
+                        You can find this on your wallet or on
+                        <a href="#" id="explorerLink" target="_blank" rel="noopener">
+                            the blockchain explorer
+                        </a>.
+                    </div>
+
+                </div>
+
+                <div class="message" id="formMessage"></div>
+
+                <button type="button" class="submit-btn" id="submitTxButton">
+                    Submit Payment Proof
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- NOTE -->
+        <div class="note-box">
+            <div class="note-icon">ℹ️</div>
+            <div>
+                <strong>What happens next?</strong>
+                <p>
+                    After you submit your transaction hash, our team will
+                    verify your payment manually. This usually takes a few hours.
+                    Once approved, your challenge will appear in your dashboard.
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+</div>
+
+
+<script type="module" src="payment.js"></script>
+
+</body>
+</html>

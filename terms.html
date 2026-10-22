@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Terms of Service — RISE FUNDED</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --purple: #5b2aa8;
+    --purple-2: #7442c8;
+    --purple-3: #9569df;
+    --navy: #102a56;
+    --navy-2: #1b4384;
+    --text: #111318;
+    --muted: #697080;
+    --white: #ffffff;
+    --soft: #f7f5fc;
+    --soft-2: #faf9fd;
+    --line: #e8e1f3;
+    --green: #20a86b;
+    --gold: #d7a83c;
+    --danger: #c53d4d;
+    --shadow: 0 20px 60px rgba(49, 31, 92, .10);
+    --shadow-2: 0 12px 35px rgba(49, 31, 92, .08);
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(116, 66, 200, .08), transparent 40%),
+        linear-gradient(180deg, #faf9fd 0%, #f4f0fa 100%);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a { text-decoration: none; color: inherit; }
+
+.navbar {
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255,255,255,.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-brand { display: flex; align-items: center; gap: 12px; }
+.nav-brand img { width: 42px; height: 42px; object-fit: contain; }
+
+.nav-brand-text { display: flex; flex-direction: column; line-height: 1; }
+.nav-brand-text strong { color: var(--navy); font-size: 16px; font-weight: 900; letter-spacing: 1px; }
+.nav-brand-text span { color: var(--purple); font-size: 10px; font-weight: 900; letter-spacing: 3px; margin-top: 5px; }
+
+.nav-back {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: white;
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 800;
+    transition: .2s;
+}
+.nav-back:hover { border-color: var(--purple); color: var(--purple); }
+
+.legal-main {
+    flex: 1;
+    padding: 70px 24px 80px;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.legal-hero {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--line);
+}
+
+.legal-kicker {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.legal-title {
+    color: var(--purple);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+}
+
+.legal-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    background: white;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+}
+.legal-meta strong { color: var(--purple); font-weight: 900; }
+
+.legal-content {
+    background: white;
+    padding: 50px 60px;
+    border-radius: 24px;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-2);
+}
+
+.legal-content p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.85;
+    margin-bottom: 18px;
+}
+
+.legal-content h2 {
+    color: var(--navy);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -.4px;
+    margin-top: 44px;
+    margin-bottom: 18px;
+    padding-top: 30px;
+    border-top: 1px solid var(--line);
+}
+
+.legal-content h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+}
+
+.legal-content h2 .section-number {
+    color: var(--purple);
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    margin-right: 10px;
+    opacity: .5;
+}
+
+.legal-content h3 {
+    color: var(--navy);
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: -.2px;
+    margin-top: 26px;
+    margin-bottom: 12px;
+}
+
+.legal-content ul,
+.legal-content ol {
+    margin: 0 0 18px 24px;
+    padding: 0;
+}
+
+.legal-content li {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.85;
+    margin-bottom: 8px;
+}
+
+.legal-content li strong,
+.legal-content strong {
+    color: var(--navy);
+    font-weight: 900;
+}
+
+.legal-content a {
+    color: var(--purple);
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+.legal-callout {
+    padding: 20px 24px;
+    border-radius: 14px;
+    background: var(--soft);
+    border-left: 4px solid var(--purple);
+    margin: 24px 0;
+}
+
+.legal-callout.warning {
+    background: #fff8e6;
+    border-left-color: var(--gold);
+}
+
+.legal-callout.danger {
+    background: #fdf0f2;
+    border-left-color: var(--danger);
+}
+
+.legal-callout p {
+    margin: 0;
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.7;
+}
+
+.legal-callout p strong {
+    color: var(--navy);
+}
+
+.legal-contact {
+    margin-top: 50px;
+    padding: 36px 40px;
+    border-radius: 20px;
+    background:
+        radial-gradient(circle at 90% 10%, rgba(149,105,223,.20), transparent 35%),
+        linear-gradient(135deg, #101f43, #162f61 55%, #243f78);
+    color: white;
+    text-align: center;
+}
+
+.legal-contact h3 {
+    color: white;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 12px;
+}
+
+.legal-contact p {
+    color: #b8c4dc;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.legal-contact a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 26px;
+    border-radius: 12px;
+    background: white;
+    color: var(--purple);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: .3px;
+    transition: .2s;
+}
+
+.legal-contact a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,0,0,.20);
+}
+
+.legal-footer {
+    padding: 30px 40px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 600;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.legal-footer-links { display: flex; gap: 22px; }
+.legal-footer-links a:hover { color: var(--purple); }
+
+@media (max-width: 700px) {
+    .navbar { padding: 16px 20px; }
+    .nav-brand-text { display: none; }
+    .legal-main { padding: 50px 18px 60px; }
+    .legal-title { font-size: 32px; }
+    .legal-content { padding: 30px 24px; border-radius: 18px; }
+    .legal-content h2 { font-size: 20px; margin-top: 34px; padding-top: 24px; }
+    .legal-content h3 { font-size: 15px; }
+    .legal-contact { padding: 28px 24px; }
+    .legal-footer { flex-direction: column; text-align: center; padding: 26px 20px; }
+    .legal-footer-links { gap: 16px; flex-wrap: wrap; justify-content: center; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <a href="index.html" class="nav-brand">
+        <img src="assets/logo.svg" alt="RISE FUNDED">
+        <div class="nav-brand-text">
+            <strong>RISE</strong>
+            <span>FUNDED</span>
+        </div>
+    </a>
+
+    <a href="index.html" class="nav-back">← Back to Home</a>
+</nav>
+
+
+<!-- MAIN -->
+<main class="legal-main">
+
+    <div class="legal-hero">
+        <div class="legal-kicker">Legal</div>
+        <h1 class="legal-title">Terms of Service</h1>
+
+        <div class="legal-meta">
+            <span>Last Updated: <strong>January 2026</strong></span>
+        </div>
+    </div>
+
+
+    <div class="legal-content">
+
+        <h2><span class="section-number">01.</span>Introduction</h2>
+
+        <p>
+            These Terms of Service ("Terms") constitute a legally binding agreement
+            between you and <strong>RISE FUNDED FZ-LLC</strong>, a company registered
+            in the Dubai Multi Commodities Centre (DMCC), United Arab Emirates.
+        </p>
+
+        <p>
+            By accessing, browsing, or using our website, platform, mobile application,
+            or any services provided by RISE FUNDED (collectively, the "Services"), you
+            acknowledge that you have read, understood, and agree to be bound by these
+            Terms in their entirety. If you do not agree with any part of these Terms,
+            you must immediately discontinue use of the Services.
+        </p>
+
+        <p>
+            RISE FUNDED reserves the right to modify, amend, or update these Terms at
+            any time, with or without prior notice. It is your responsibility to
+            periodically review this page to stay informed of any changes. Your
+            continued use of the Services following any modification constitutes your
+            acceptance of the updated Terms.
+        </p>
+
+
+        <h2><span class="section-number">02.</span>Eligibility</h2>
+
+        <p>
+            To be eligible to use the Services, you must meet all of the following criteria:
+        </p>
+
+        <ul>
+            <li><strong>Age Requirement:</strong> You must be at least 18 years of age, or the
+            legal age of majority in your jurisdiction, whichever is greater.</li>
+
+            <li><strong>Legal Capacity:</strong> You must have the legal capacity to enter into
+            binding contracts under applicable law.</li>
+
+            <li><strong>Restricted Jurisdictions:</strong> You must not be a resident or citizen
+            of any country or region subject to international sanctions, including but not limited
+            to: Cuba, North Korea, Syria, Sudan, and the Crimea region. Additionally, users
+            from jurisdictions where trading evaluation services are restricted by local law are
+            prohibited from using the Services.</li>
+
+            <li><strong>Regulatory Compliance:</strong> You must comply with all applicable local,
+            national, and international laws and regulations in connection with your use of the
+            Services.</li>
+
+            <li><strong>Not a Restricted Person:</strong> You must not be listed on any government
+            prohibited or restricted party list, including but not limited to sanctions lists
+            maintained by the UN, EU, US Treasury (OFAC), or UK Treasury.</li>
+        </ul>
+
+        <div class="legal-callout danger">
+            <p>
+                <strong>Important:</strong> If RISE FUNDED discovers that you have provided false
+                information regarding your eligibility, we reserve the right to immediately terminate
+                your account and forfeit any funds, including challenge fees and profits.
+            </p>
+        </div>
+
+
+        <h2><span class="section-number">03.</span>Account Registration & Security</h2>
+
+        <h3>3.1 Account Creation</h3>
+
+        <p>
+            To access certain features of the Services, you must create an account by providing
+            accurate, current, and complete information, including but not limited to your full
+            legal name, valid email address, country of residence, and phone number. You agree
+            to promptly update your information if it changes.
+        </p>
+
+        <h3>3.2 Account Security</h3>
+
+        <p>
+            You are solely responsible for maintaining the confidentiality of your account
+            credentials, including your password, and for all activities that occur under your
+            account. You agree to:
+        </p>
+
+        <ul>
+            <li>Notify RISE FUNDED immediately of any unauthorized use of your account.</li>
+            <li>Not share your account credentials with any third party.</li>
+            <li>Use strong, unique passwords that are not used on other platforms.</li>
+            <li>Not use the Services on shared or public devices without proper security measures.</li>
+        </ul>
+
+        <h3>3.3 One Account Per User</h3>
+
+        <p>
+            Each user is permitted to hold only <strong>one (1) RISE FUNDED account</strong>.
+            Creating multiple accounts, using fake identities, or using another person's identity
+            is strictly prohibited and will result in immediate termination and forfeiture of
+            all funds.
+        </p>
+
+
+        <h2><span class="section-number">04.</span>Challenge & Evaluation Rules</h2>
+
+        <h3>4.1 Nature of the Services</h3>
+
+        <p>
+            RISE FUNDED provides proprietary trading evaluation challenges to identify skilled
+            traders. Upon successful completion of a Challenge, traders may be offered a funded
+            trading account with access to RISE FUNDED's capital. RISE FUNDED is
+            <strong>not a broker, investment advisor, or financial institution</strong>.
+        </p>
+
+        <h3>4.2 Challenge Parameters</h3>
+
+        <p>
+            Each Challenge has specific trading parameters, including but not limited to:
+        </p>
+
+        <ul>
+            <li><strong>Profit Target:</strong> The minimum percentage of profit required to pass
+            the Challenge, as specified in the selected plan.</li>
+
+            <li><strong>Maximum Daily Drawdown:</strong> The maximum loss permitted within a single
+            trading day, calculated from the day's starting balance or equity.</li>
+
+            <li><strong>Maximum Overall Drawdown:</strong> The maximum cumulative loss permitted
+            from the initial balance of the account.</li>
+
+            <li><strong>Minimum Trading Days:</strong> The minimum number of days on which the
+            trader must place at least one (1) trade.</li>
+
+            <li><strong>Profit Split:</strong> The percentage of profits the trader is entitled
+            to upon withdrawal, as specified in the selected plan.</li>
+        </ul>
+
+        <p>
+            The specific parameters for each Challenge are displayed on our website at the time
+            of purchase and are incorporated into this Agreement by reference.
+        </p>
+
+        <h3>4.3 Breach of Rules</h3>
+
+        <p>
+            If you breach any of the Challenge rules (including exceeding daily or overall drawdown
+            limits), your Challenge will be automatically failed, and you will not be eligible
+            for a Funded Account. In such cases, <strong>challenge fees are non-refundable</strong>.
+        </p>
+
+        <h3>4.4 Time Limits</h3>
+
+        <p>
+            Unless explicitly stated otherwise in the Challenge description, there are
+            <strong>no time limits</strong> for completing a Challenge. You may take as long as
+            you need to reach the profit target, provided you remain within all other rules.
+        </p>
+
+
+        <h2><span class="section-number">05.</span>Funded Account Terms</h2>
+
+        <h3>5.1 Issuance of Funded Accounts</h3>
+
+        <p>
+            Upon successful completion of a Challenge, RISE FUNDED may, at its sole discretion,
+            issue a Funded Account. The issuance of a Funded Account is subject to satisfactory
+            completion of our KYC verification process.
+        </p>
+
+        <h3>5.2 Trading Restrictions on Funded Accounts</h3>
+
+        <p>
+            On Funded Accounts, the following restrictions apply:
+        </p>
+
+        <ul>
+            <li>Trading must comply with all rules of the Funded Account, including drawdown limits
+            and any additional restrictions specified in the account agreement.</li>
+
+            <li>Copy trading from other traders, use of unauthorized Expert Advisors, and
+            exploitation of platform errors are strictly prohibited.</li>
+
+            <li>News trading may be restricted on certain account types. Please refer to your
+            account specifications for details.</li>
+
+            <li>Sharing, selling, or transferring your Funded Account to a third party is prohibited.</li>
+        </ul>
+
+        <h3>5.3 Modification or Termination</h3>
+
+        <p>
+            RISE FUNDED reserves the right to modify, suspend, or terminate a Funded Account at
+            any time if we suspect fraud, abuse, rule violation, or any activity that threatens
+            the integrity of our Services.
+        </p>
+
+
+        <h2><span class="section-number">06.</span>Payouts</h2>
+
+        <h3>6.1 Payout Eligibility</h3>
+
+        <p>
+            To be eligible for a payout, you must:
+        </p>
+
+        <ul>
+            <li>Be trading on a Funded Account in good standing.</li>
+            <li>Have completed the minimum required trading period (if applicable).</li>
+            <li>Meet the minimum payout amount (typically 1% of the account size).</li>
+            <li>Have successfully completed KYC verification.</li>
+            <li>Not be in breach of any rules outlined in these Terms.</li>
+        </ul>
+
+        <h3>6.2 Payout Processing</h3>
+
+        <p>
+            Payouts are processed according to the payout cycle selected at the time of purchase
+            (Weekly, Bi-Weekly, Monthly, or On Demand). Payouts are typically processed within
+            <strong>24 hours</strong> of approval. Payout methods include cryptocurrency transfers
+            (USDT on TRC20, BEP20, or ERC20 networks) and other methods as determined by RISE FUNDED.
+        </p>
+
+        <h3>6.3 Payout Refusal</h3>
+
+        <p>
+            RISE FUNDED reserves the right to refuse or delay a payout if:
+        </p>
+
+        <ul>
+            <li>We suspect fraudulent activity or rule violations.</li>
+            <li>KYC verification has not been completed.</li>
+            <li>Required documentation is missing or unclear.</li>
+            <li>The account has been flagged for suspicious trading activity.</li>
+        </ul>
+
+
+        <h2><span class="section-number">07.</span>Prohibited Activities</h2>
+
+        <p>
+            The following activities are strictly prohibited and constitute material breaches
+            of these Terms:
+        </p>
+
+        <h3>7.1 Trading Prohibitions</h3>
+
+        <ul>
+            <li><strong>Copy Trading:</strong> Copying trades from other traders, signals, or
+            services, whether manually or via software, unless explicitly permitted.</li>
+
+            <li><strong>High-Frequency Trading:</strong> Using automated systems to execute
+            trades at extremely high speeds, unless explicitly permitted.</li>
+
+            <li><strong>Latency Arbitrage:</strong> Exploiting price discrepancies due to latency
+            between price feeds or execution venues.</li>
+
+            <li><strong>Server Exploitation:</strong> Using technical exploits, errors, or bugs
+            in our platform or third-party platforms.</li>
+
+            <li><strong>Reverse Arbitrage:</strong> Placing opposing trades across multiple
+            accounts to exploit pricing inconsistencies.</li>
+
+            <li><strong>Tick Scalping:</strong> Using high-frequency scalping techniques that
+            exploit minor price movements.</li>
+
+            <li><strong>Gap Trading:</strong> Exploiting weekend gaps or news-based gaps in
+            prohibited account types.</li>
+        </ul>
+
+        <h3>7.2 Platform Prohibitions</h3>
+
+        <ul>
+            <li>Sharing account credentials with third parties.</li>
+            <li>Using VPNs to bypass regional restrictions.</li>
+            <li>Attempting to hack, DDoS, or disrupt the Services.</li>
+            <li>Scraping, data mining, or automated data collection from our platform.</li>
+            <li>Using the Services for money laundering or illegal activities.</li>
+        </ul>
+
+        <h3>7.3 Consequences</h3>
+
+        <div class="legal-callout danger">
+            <p>
+                <strong>Violation of any prohibited activity will result in:</strong>
+                immediate termination of your account, forfeiture of all funds (including
+                challenge fees and profits), and potential legal action.
+            </p>
+        </div>
+
+
+        <h2><span class="section-number">08.</span>Fees & Refunds</h2>
+
+        <h3>8.1 Challenge Fees</h3>
+
+        <p>
+            Challenge fees are <strong>one-time, non-recurring payments</strong> that grant you
+            access to the selected Challenge. Fees vary by account size and plan type.
+        </p>
+
+        <h3>8.2 Refund Policy</h3>
+
+        <p>
+            Challenge fees are <strong>refundable</strong> under the following conditions:
+        </p>
+
+        <ul>
+            <li>Upon successfully passing the Challenge AND receiving your first payout from a
+            Funded Account, the original Challenge fee will be refunded to you.</li>
+
+            <li>Refund requests must be made through the dashboard or by contacting support.</li>
+        </ul>
+
+        <p>
+            Challenge fees are <strong>non-refundable</strong> if:
+        </p>
+
+        <ul>
+            <li>You fail the Challenge (breach of drawdown, inactivity, or any rule violation).</li>
+            <li>You request a refund outside the eligible timeframe.</li>
+            <li>You are found to be in violation of these Terms.</li>
+        </ul>
+
+        <h3>8.3 Chargebacks</h3>
+
+        <p>
+            Initiating a chargeback or payment dispute without first contacting our support team
+            will result in immediate account termination and permanent ban from the Services.
+        </p>
+
+
+        <h2><span class="section-number">09.</span>Intellectual Property</h2>
+
+        <p>
+            All content, materials, trademarks, logos, designs, code, and other intellectual
+            property on the Services are owned by or licensed to RISE FUNDED and are protected
+            by applicable intellectual property laws, including copyright, trademark, and trade
+            secret laws.
+        </p>
+
+        <p>
+            You may not:
+        </p>
+
+        <ul>
+            <li>Copy, reproduce, distribute, or create derivative works of our content.</li>
+            <li>Use our trademarks, logos, or branding without explicit written permission.</li>
+            <li>Remove any copyright, trademark, or other proprietary notices.</li>
+            <li>Frame, mirror, or link to our Services in a misleading way.</li>
+        </ul>
+
+
+        <h2><span class="section-number">10.</span>Disclaimer of Warranties</h2>
+
+        <p>
+            THE SERVICES ARE PROVIDED ON AN <strong>"AS IS" AND "AS AVAILABLE"</strong> BASIS,
+            WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE.
+        </p>
+
+        <p>
+            TO THE FULLEST EXTENT PERMITTED BY LAW, RISE FUNDED DISCLAIMS ALL WARRANTIES,
+            INCLUDING BUT NOT LIMITED TO:
+        </p>
+
+        <ul>
+            <li>Warranties of merchantability, fitness for a particular purpose, and non-infringement.</li>
+            <li>Warranties that the Services will be uninterrupted, error-free, or secure.</li>
+            <li>Warranties regarding the accuracy, reliability, or completeness of any content.</li>
+            <li>Warranties that defects will be corrected or that the Services are free of viruses.</li>
+        </ul>
+
+        <p>
+            TRADING INVOLVES SIGNIFICANT RISK. YOU ACKNOWLEDGE THAT YOU MAY LOSE SOME OR ALL OF
+            YOUR CHALLENGE FEE AND THAT PAST PERFORMANCE IS NOT INDICATIVE OF FUTURE RESULTS.
+        </p>
+
+
+        <h2><span class="section-number">11.</span>Limitation of Liability</h2>
+
+        <p>
+            TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, RISE FUNDED, ITS OFFICERS,
+            DIRECTORS, EMPLOYEES, AGENTS, AND AFFILIATES SHALL NOT BE LIABLE FOR:
+        </p>
+
+        <ul>
+            <li>Any indirect, incidental, special, consequential, or punitive damages.</li>
+            <li>Any loss of profits, revenue, data, or business opportunities.</li>
+            <li>Any damages arising from your use or inability to use the Services.</li>
+            <li>Any damages arising from third-party services or content.</li>
+            <li>Any damages exceeding the total amount you paid to RISE FUNDED in the twelve (12)
+            months preceding the claim.</li>
+        </ul>
+
+
+        <h2><span class="section-number">12.</span>Indemnification</h2>
+
+        <p>
+            You agree to indemnify, defend, and hold harmless RISE FUNDED, its officers, directors,
+            employees, agents, and affiliates from and against any and all claims, damages, losses,
+            liabilities, costs, and expenses (including reasonable attorneys' fees) arising from:
+        </p>
+
+        <ul>
+            <li>Your use of the Services.</li>
+            <li>Your breach of these Terms.</li>
+            <li>Your violation of any applicable law or regulation.</li>
+            <li>Your violation of any third-party rights.</li>
+        </ul>
+
+
+        <h2><span class="section-number">13.</span>Termination</h2>
+
+        <p>
+            RISE FUNDED reserves the right to terminate, suspend, or restrict your access to the
+            Services at any time, with or without notice, for any reason, including but not limited
+            to:
+        </p>
+
+        <ul>
+            <li>Violation of these Terms.</li>
+            <li>Suspected fraudulent or prohibited activity.</li>
+            <li>Requests from law enforcement or regulatory authorities.</li>
+            <li>Technical or operational issues.</li>
+        </ul>
+
+        <p>
+            Upon termination, your right to use the Services will immediately cease. Any provisions
+            of these Terms that by their nature should survive termination shall survive, including
+            but not limited to intellectual property provisions, disclaimers, indemnification, and
+            limitations of liability.
+        </p>
+
+
+        <h2><span class="section-number">14.</span>Governing Law & Dispute Resolution</h2>
+
+        <p>
+            These Terms shall be governed by and construed in accordance with the laws of the
+            <strong>United Arab Emirates</strong> and the regulations of the <strong>Dubai
+            Multi Commodities Centre (DMCC)</strong>, without regard to its conflict of law
+            principles.
+        </p>
+
+        <p>
+            Any dispute arising out of or in connection with these Terms shall be subject to the
+            exclusive jurisdiction of the courts of <strong>Dubai, United Arab Emirates</strong>.
+        </p>
+
+        <p>
+            Before initiating any legal proceedings, you agree to attempt to resolve any dispute
+            informally by contacting RISE FUNDED at
+            <a href="mailto:risefunded.support@gmail.com">risefunded.support@gmail.com</a>.
+        </p>
+
+
+        <h2><span class="section-number">15.</span>General Provisions</h2>
+
+        <h3>15.1 Entire Agreement</h3>
+
+        <p>
+            These Terms constitute the entire agreement between you and RISE FUNDED and supersede
+            all prior agreements, understandings, and communications.
+        </p>
+
+        <h3>15.2 Severability</h3>
+
+        <p>
+            If any provision of these Terms is found to be invalid or unenforceable, the remaining
+            provisions shall remain in full force and effect.
+        </p>
+
+        <h3>15.3 Waiver</h3>
+
+        <p>
+            Failure by RISE FUNDED to enforce any provision of these Terms shall not constitute
+            a waiver of that provision or any other provision.
+        </p>
+
+        <h3>15.4 Assignment</h3>
+
+        <p>
+            You may not assign or transfer your rights or obligations under these Terms without
+            prior written consent from RISE FUNDED. RISE FUNDED may freely assign these Terms.
+        </p>
+
+        <h3>15.5 Force Majeure</h3>
+
+        <p>
+            RISE FUNDED shall not be liable for any failure or delay in performance due to causes
+            beyond its reasonable control, including but not limited to natural disasters, war,
+            terrorism, pandemics, or internet outages.
+        </p>
+
+
+        <h2><span class="section-number">16.</span>Acknowledgment</h2>
+
+        <p>
+            By using the Services, you acknowledge that you have read, understood, and agree to
+            be bound by these Terms of Service. You further acknowledge that you have had the
+            opportunity to seek independent legal advice before accepting these Terms.
+        </p>
+
+        <div class="legal-callout warning">
+            <p>
+                <strong>Trading involves substantial risk of loss.</strong> You should carefully
+                consider whether trading is suitable for you in light of your financial situation
+                and investment objectives. RISE FUNDED does not provide investment advice, and
+                nothing on our platform should be construed as such.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="legal-contact">
+        <h3>Questions about these Terms?</h3>
+        <p>
+            If you have any questions or concerns about these Terms of Service, please contact
+            our team.
+        </p>
+        <a href="contact.html">Contact Support →</a>
+    </div>
+
+</main>
+
+
+<footer class="legal-footer">
+    <span>© 2026 RISE FUNDED FZ-LLC — All rights reserved.</span>
+
+    <div class="legal-footer-links">
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="risk.html">Risk Disclosure</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</footer>
+
+</body>
+</html>

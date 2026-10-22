@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RISE FUNDED — Trade. Prove. Rise.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+</head>
+
+<body>
+
+<!-- =======================================================
+     TOP BAR PROMOTION (ساخته می‌شه با JS)
+======================================================= -->
+<div class="promo-topbar" id="promoTopbar">
+    <div class="promo-topbar-inner">
+        <span class="promo-topbar-icon">🎉</span>
+        <span class="promo-topbar-text" id="promoTopbarText"></span>
+        <span class="promo-topbar-code" id="promoTopbarCode"></span>
+        <span class="promo-topbar-discount" id="promoTopbarDiscount"></span>
+        <button class="promo-topbar-close" id="promoTopbarClose" aria-label="Close">×</button>
+    </div>
+</div>
+
+
+<!-- =======================================================
+     NAVBAR
+======================================================= -->
+<header class="navbar">
+    <div class="container nav-inner">
+
+        <a href="#" class="logo">
+            <img src="assets/logo.svg" alt="RISE FUNDED" class="logo-mark" />
+            <div class="logo-text">
+                RISE <span>FUNDED</span>
+            </div>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#challenges">Challenges</a>
+            <a href="#payouts">Payouts</a>
+            <a href="#how">How It Works</a>
+            <a href="#traders">Traders</a>
+            <a href="#faq">FAQ</a>
+            <a href="contact.html">Contact</a>
+
+            <div class="mobile-auth-links">
+                <a href="auth/login.html" class="btn btn-outline">
+                    Login
+                </a>
+                <a href="auth/register.html" class="btn btn-primary">
+                    Get Funded
+                </a>
+            </div>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="auth/login.html" class="btn btn-outline" id="loginButton">
+                Login
+            </a>
+            <a href="auth/register.html" class="btn btn-primary">
+                Get Funded
+            </a>
+            <div class="mobile-menu" id="mobileMenu">☰</div>
+        </div>
+
+    </div>
+</header>
+
+
+<!-- =======================================================
+     HERO
+======================================================= -->
+<section class="hero">
+    <div class="container hero-grid">
+
+        <div class="hero-copy reveal">
+            <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                BUILT FOR SERIOUS TRADERS
+            </div>
+
+            <h1>
+                Trade with skill.<br>
+                <span>Rise with capital.</span>
+            </h1>
+
+            <p>
+                Prove your trading ability through a transparent
+                evaluation, unlock real capital, and keep more
+                of what you earn.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#challenges" class="btn btn-primary">
+                    Start Your Challenge
+                </a>
+                <a href="#how" class="btn btn-outline">
+                    How It Works
+                </a>
+            </div>
+
+            <div class="trust-row">
+                <div class="trust-item">
+                    <span class="trust-check">✓</span>
+                    No Hidden Rules
+                </div>
+                <div class="trust-item">
+                    <span class="trust-check">✓</span>
+                    Fast Payouts
+                </div>
+                <div class="trust-item">
+                    <span class="trust-check">✓</span>
+                    Up to 95% Profit Split
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-visual reveal">
+            <div class="orbit one"></div>
+            <div class="orbit two"></div>
+            <div class="orbit three"></div>
+
+            <div class="float-card a">
+                <small>TRADER STATUS</small>
+                <strong>FUNDED ✓</strong>
+            </div>
+
+            <div class="float-card b">
+                <small>PROFIT SPLIT</small>
+                <strong>UP TO 95%</strong>
+            </div>
+
+            <div class="float-card c">
+                <small>PAYOUT WINDOW</small>
+                <strong>24 HOURS</strong>
+            </div>
+
+            <div class="rf-core">
+                <img src="assets/logo-white.svg" alt="RF" />
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =======================================================
+     STATS
+======================================================= -->
+<section class="stats">
+    <div class="container">
+        <div class="stats-grid reveal">
+            <div class="stat">
+                <strong>$1,658,260</strong>
+                <span>Total Payouts</span>
+            </div>
+            <div class="stat">
+                <strong>2,840+</strong>
+                <span>Funded Traders</span>
+            </div>
+            <div class="stat">
+                <strong>$48,750</strong>
+                <span>Highest Payout</span>
+            </div>
+            <div class="stat">
+                <strong>24H</strong>
+                <span>Payout Window</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- =======================================================
+     CHALLENGES
+======================================================= -->
+<section class="challenges" id="challenges">
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div class="section-kicker">CHOOSE YOUR PATH</div>
+            <h2>
+                Find the challenge<br>
+                built for your style.
+            </h2>
+            <p>
+                Choose your evaluation model, select your account size,
+                and start trading with a clear path toward funding.
+            </p>
+        </div>
+
+        <div class="plan-tabs reveal">
+            <button class="plan-tab active" data-plan="oneStep">1 STEP</button>
+            <button class="plan-tab" data-plan="standard">2 STEP STANDARD</button>
+            <button class="plan-tab" data-plan="pro">2 STEP PRO</button>
+            <button class="plan-tab" data-plan="instant">INSTANT</button>
+        </div>
+
+        <div class="account-selector reveal">
+            <button class="account-btn active" data-account="5000">
+                <strong>$5K</strong><span>Account</span>
+            </button>
+            <button class="account-btn" data-account="10000">
+                <strong>$10K</strong><span>Account</span>
+            </button>
+            <button class="account-btn" data-account="25000">
+                <strong>$25K</strong><span>Account</span>
+            </button>
+            <button class="account-btn" data-account="50000">
+                <strong>$50K</strong><span>Account</span>
+            </button>
+            <button class="account-btn" data-account="100000">
+                <strong>$100K</strong><span>Account</span>
+            </button>
+        </div>
+
+        <div class="challenge-card reveal">
+            <div class="challenge-info">
+                <div class="challenge-label" id="planLabel">1 STEP EVALUATION</div>
+                <h3 id="accountTitle">$5,000 Account</h3>
+
+                <div class="challenge-price">
+                    <small>Challenge Fee</small>
+                    <div class="price-row">
+                        <strong id="challengePrice">$34</strong>
+                        <span>one-time</span>
+                    </div>
+                </div>
+
+                <p class="challenge-description" id="planDescription">
+                    A streamlined one-step evaluation designed
+                    for traders who want a direct path to funded capital.
+                </p>
+
+                <button type="button" class="btn btn-primary" id="startChallengeButton">
+                    Start Challenge
+                </button>
+            </div>
+
+            <div class="rules">
+                <div class="rule highlight">
+                    <span>Profit Target</span>
+                    <strong id="profitTarget">10%</strong>
+                </div>
+                <div class="rule">
+                    <span>Max Drawdown</span>
+                    <strong id="maxDrawdown">10%</strong>
+                </div>
+                <div class="rule">
+                    <span>Daily Drawdown</span>
+                    <strong id="dailyDrawdown">4%</strong>
+                </div>
+                <div class="rule">
+                    <span>Profit Split</span>
+                    <strong id="profitSplit">80%</strong>
+                </div>
+                <div class="rule">
+                    <span>Minimum Days</span>
+                    <strong id="minDays">3</strong>
+                </div>
+                <div class="rule">
+                    <span>Leverage</span>
+                    <strong id="leverage">1:100</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="plan-note reveal">
+            <span>Selected plan:</span>
+            <b id="selectedPlanText">1 STEP</b>
+            <span>•</span>
+            <span>Selected account:</span>
+            <b id="selectedAccountText">$5K</b>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =======================================================
+     PAYOUT
+======================================================= -->
+<section class="payout" id="payouts">
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div class="section-kicker">PAYOUTS</div>
+            <h2>Get paid on your schedule.</h2>
+            <p>
+                Choose the payout cycle that fits your trading rhythm
+                and keep a larger share as your payout frequency changes.
+            </p>
+        </div>
+
+        <div class="payout-grid">
+            <div class="payout-card reveal">
+                <div class="payout-icon">↗</div>
+                <h3>Weekly</h3>
+                <div class="percent">65%</div>
+                <p>Receive your profit split every Thursday according to the weekly payout cycle.</p>
+                <span class="payout-tag">EVERY THURSDAY</span>
+            </div>
+
+            <div class="payout-card reveal">
+                <div class="payout-icon">↗</div>
+                <h3>Bi-Weekly</h3>
+                <div class="percent">80%</div>
+                <p>Request and receive your eligible profit distribution every two weeks.</p>
+                <span class="payout-tag">EVERY 2 WEEKS</span>
+            </div>
+
+            <div class="payout-card reveal">
+                <div class="payout-icon">↗</div>
+                <h3>Monthly</h3>
+                <div class="percent">90%</div>
+                <p>Choose a monthly payout cycle and keep ninety percent of your eligible profits.</p>
+                <span class="payout-tag">MONTHLY</span>
+            </div>
+        </div>
+
+        <div class="ondemand reveal">
+            <div class="ondemand-left">
+                <div class="ondemand-icon">⚡</div>
+                <div>
+                    <h3>On Demand Payout</h3>
+                    <p>
+                        Activate On Demand for <strong>+10%</strong>
+                        to your challenge fee and receive
+                        <strong>95% profit split</strong>
+                        on a two-week payout cycle.
+                    </p>
+                </div>
+            </div>
+
+            <div class="toggle-wrap">
+                <span class="toggle-label">ADD ON DEMAND</span>
+                <label class="toggle">
+                    <input type="checkbox" id="onDemandToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =======================================================
+     24H GUARANTEE
+======================================================= -->
+<section class="guarantee">
+    <div class="container">
+        <div class="guarantee-box reveal">
+            <div>
+                <div class="guarantee-kicker">PAYOUT GUARANTEE</div>
+                <h2>
+                    Reach your payout.<br>
+                    <span>Get paid within 24H.</span>
+                </h2>
+                <p>
+                    Once you reach the applicable payout conditions
+                    and your payout is approved, RISE FUNDED processes
+                    your eligible payout within 24 hours.
+                </p>
+
+                <div class="guarantee-steps">
+                    <div class="guarantee-step">
+                        <div class="step-icon">1</div>
+                        Reach your eligible payout
+                    </div>
+                    <div class="guarantee-step">
+                        <div class="step-icon">2</div>
+                        Submit your payout request
+                    </div>
+                    <div class="guarantee-step">
+                        <div class="step-icon">3</div>
+                        Receive your payout within 24H
+                    </div>
+                </div>
+            </div>
+
+            <div class="guarantee-clock">
+                <div class="clock-inner">
+                    <div>
+                        <strong>24H</strong>
+                        <span>PAYOUT WINDOW</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- =======================================================
+     HOW IT WORKS
+======================================================= -->
+<section class="how" id="how">
+    <div class="container">
+        <div class="section-head reveal">
+            <div class="section-kicker">SIMPLE PROCESS</div>
+            <h2>
+                From challenge<br>
+                to funded.
+            </h2>
+        </div>
+
+        <div class="steps">
+            <div class="step reveal">
+                <div class="step-number">STEP 01</div>
+                <h3>Choose a Challenge</h3>
+                <p>Select your preferred evaluation model and account size.</p>
+            </div>
+            <div class="step reveal">
+                <div class="step-number">STEP 02</div>
+                <h3>Trade Your Plan</h3>
+                <p>Trade within the defined risk parameters and reach your target.</p>
+            </div>
+            <div class="step reveal">
+                <div class="step-number">STEP 03</div>
+                <h3>Get Funded</h3>
+                <p>Complete the required stages and unlock your funded account.</p>
+            </div>
+            <div class="step reveal">
+                <div class="step-number">STEP 04</div>
+                <h3>Earn & Withdraw</h3>
+                <p>Trade your funded account and withdraw eligible profits on your selected cycle.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- =======================================================
+     TESTIMONIALS
+======================================================= -->
+<section class="testimonials" id="traders">
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div class="section-kicker">TRADER STORIES</div>
+            <h2>Built around traders.</h2>
+            <p>Real trading is about discipline, consistency, and executing the plan.</p>
+        </div>
+
+        <div class="testimonial-grid">
+            <div class="testimonial reveal">
+                <div class="stars">★★★★★</div>
+                <p>“The rules are straightforward and the platform gives me exactly what I need to focus on execution.”</p>
+                <div class="person">
+                    <div class="avatar">AM</div>
+                    <div>
+                        <strong>Alex Morgan</strong>
+                        <span>Funded Trader</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial reveal">
+                <div class="stars">★★★★★</div>
+                <p>“I wanted a prop firm where the challenge rules were easy to understand. RISE keeps everything clear.”</p>
+                <div class="person">
+                    <div class="avatar">JD</div>
+                    <div>
+                        <strong>James Davis</strong>
+                        <span>Funded Trader</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial reveal">
+                <div class="stars">★★★★★</div>
+                <p>“The payout options make it easier to choose a schedule that fits my trading routine.”</p>
+                <div class="person">
+                    <div class="avatar">RK</div>
+                    <div>
+                        <strong>Ryan Keller</strong>
+                        <span>Funded Trader</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial reveal">
+                <div class="stars">★★★★☆</div>
+                <p>“Simple challenge structure, clean dashboard, and no unnecessary distractions.”</p>
+                <div class="person">
+                    <div class="avatar">SM</div>
+                    <div>
+                        <strong>Samuel Miller</strong>
+                        <span>Funded Trader</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial reveal">
+                <div class="stars">★★★★★</div>
+                <p>“I like having multiple payout cycles. It gives traders more flexibility without making the process complicated.”</p>
+                <div class="person">
+                    <div class="avatar">OL</div>
+                    <div>
+                        <strong>Oliver Lee</strong>
+                        <span>Funded Trader</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial reveal">
+                <div class="stars">★★★★★</div>
+                <p>“The whole experience feels designed around trading rather than selling complicated packages.”</p>
+                <div class="person">
+                    <div class="avatar">NK</div>
+                    <div>
+                        <strong>Noah King</strong>
+                        <span>Funded Trader</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =======================================================
+     TRADERS PAYOUTS
+======================================================= -->
+<section class="traders-payouts" id="traders-payouts">
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div class="section-kicker">TRADERS PAYOUTS</div>
+            <h2>
+                Traders who rise.<br>
+                Payouts that matter.
+            </h2>
+            <p>
+                A visual showcase of payout examples across the
+                RISE FUNDED trader community.
+            </p>
+        </div>
+
+        <div class="payout-showcase" id="payoutShowcase">
+            <!-- کارت‌ها با JS ساخته می‌شن -->
+        </div>
+
+        <div class="payout-footnote reveal">
+            * Displayed payout cards are illustrative examples for the website UI.
+            Verified payout records can be connected later through the RISE FUNDED database.
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =======================================================
+     FAQ
+======================================================= -->
+<section class="faq" id="faq">
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div class="section-kicker">NEED HELP?</div>
+            <h2>
+                Frequently asked<br>
+                questions.
+            </h2>
+            <p>
+                Everything you need to know about RISE FUNDED,
+                challenges, payouts and rules.
+            </p>
+        </div>
+
+        <div class="faq-filters reveal">
+            <button class="faq-filter active" data-filter="all">All</button>
+            <button class="faq-filter" data-filter="buy">Buying</button>
+            <button class="faq-filter" data-filter="challenge">Challenge</button>
+            <button class="faq-filter" data-filter="trading">Trading</button>
+            <button class="faq-filter" data-filter="payout">Payouts</button>
+            <button class="faq-filter" data-filter="kyc">KYC</button>
+            <button class="faq-filter" data-filter="certificate">Certificates</button>
+        </div>
+
+        <div class="faq-list reveal" id="faqList">
+
+            <!-- BUYING -->
+            <div class="faq-item" data-category="buy">
+                <button class="faq-question">
+                    <span>What payment methods do you accept?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>We accept USDT on TRC20, BEP20 and ERC20 networks. Credit card payments will be available soon.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="buy">
+                <button class="faq-question">
+                    <span>Is the challenge fee refundable?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes. After passing the final phase and receiving your first payout, the challenge fee is refunded to you.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="buy">
+                <button class="faq-question">
+                    <span>Can I change my account email?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>No. For security reasons, changing your email is not possible. Contact support if you have a special case.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="buy">
+                <button class="faq-question">
+                    <span>How long does it take to activate my account?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Usually a few minutes after payment confirmation. If delayed, contact support.</p>
+                </div>
+            </div>
+
+            <!-- CHALLENGE -->
+            <div class="faq-item" data-category="challenge">
+                <button class="faq-question">
+                    <span>What challenge models do you offer?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>We offer <strong>1 Step</strong>, <strong>2 Step Standard</strong>, <strong>2 Step Pro</strong> and <strong>Instant Funding</strong>.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="challenge">
+                <button class="faq-question">
+                    <span>What is the profit target for each phase?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        <strong>1 Step:</strong> 10%<br>
+                        <strong>2 Step Standard:</strong> 8% + 5%<br>
+                        <strong>2 Step Pro:</strong> 6% + 6%<br>
+                        <strong>Instant:</strong> No target — directly funded.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="challenge">
+                <button class="faq-question">
+                    <span>Is there a time limit for the challenge?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>No. There is no time limit — trade at your own pace.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="challenge">
+                <button class="faq-question">
+                    <span>What is the minimum trading days requirement?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        <strong>1 Step:</strong> 3 days<br>
+                        <strong>2 Step:</strong> 3 days per phase<br><br>
+                        💡 A trading day counts with just <strong>one position of 0.01 lot</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- TRADING -->
+            <div class="faq-item" data-category="trading">
+                <button class="faq-question">
+                    <span>What is the leverage?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        <strong>Forex:</strong> 1:100 (evaluation), 1:50 (funded)<br>
+                        <strong>Indices:</strong> 1:20<br>
+                        <strong>Commodities:</strong> 1:20<br>
+                        <strong>Crypto:</strong> 1:2
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="trading">
+                <button class="faq-question">
+                    <span>Can I trade on multiple devices?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes, but only on <strong>your own devices</strong>. Sharing accounts with others or trading on shared devices is prohibited and will result in account closure.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="trading">
+                <button class="faq-question">
+                    <span>Can I use VPN or VPS?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>VPN is allowed, but suspicious IP changes may require verification documents.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="trading">
+                <button class="faq-question">
+                    <span>Can I trade during news events?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes, but some plans have restrictions 5 minutes before and after major news.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="trading">
+                <button class="faq-question">
+                    <span>Can I hold positions over the weekend?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes, holding positions over the weekend is allowed.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="trading">
+                <button class="faq-question">
+                    <span>What is the daily drawdown limit?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        <strong>1 Step:</strong> 3%<br>
+                        <strong>2 Step Standard:</strong> 4%<br>
+                        <strong>2 Step Pro:</strong> 5%
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="trading">
+                <button class="faq-question">
+                    <span>What is the maximum overall drawdown?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        <strong>1 Step:</strong> 6%<br>
+                        <strong>2 Step Standard:</strong> 8%<br>
+                        <strong>2 Step Pro:</strong> 10%
+                    </p>
+                </div>
+            </div>
+
+            <!-- PAYOUT -->
+            <div class="faq-item" data-category="payout">
+                <button class="faq-question">
+                    <span>When can I request my first payout?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Your first payout is available <strong>14 days</strong> after your first trade on the funded account.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="payout">
+                <button class="faq-question">
+                    <span>What is my profit split?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        <strong>Weekly:</strong> 65%<br>
+                        <strong>Bi-Weekly:</strong> 80%<br>
+                        <strong>Monthly:</strong> 90%<br>
+                        <strong>On Demand:</strong> 95%
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="payout">
+                <button class="faq-question">
+                    <span>How long does a payout take?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>We guarantee <strong>24-hour</strong> payouts. If delayed, you receive an extra $1,000.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="payout">
+                <button class="faq-question">
+                    <span>What is the minimum payout amount?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p><strong>1% of the funded account size.</strong> (e.g., $250 for a $25K account)</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="payout">
+                <button class="faq-question">
+                    <span>Can I withdraw via crypto?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes, payouts under $5,000 are processed via crypto.</p>
+                </div>
+            </div>
+
+            <!-- KYC -->
+            <div class="faq-item" data-category="kyc">
+                <button class="faq-question">
+                    <span>What documents are required for KYC?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Only a <strong>passport or national ID card</strong> (with a selfie). No utility bills or proof of address needed.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="kyc">
+                <button class="faq-question">
+                    <span>When do I need to complete KYC?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        <strong>Challenge accounts:</strong> Once you reach the <strong>Real/Funded phase</strong>, you can complete KYC <strong>before reaching your first payout</strong>.<br><br>
+                        <strong>Instant funded accounts:</strong> KYC is required <strong>before your first payout</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="kyc">
+                <button class="faq-question">
+                    <span>How long does KYC take?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Usually 5 minutes to 1 business day.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="kyc">
+                <button class="faq-question">
+                    <span>How many times can I submit documents?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Up to <strong>3 times</strong>. After 3 failed attempts, further submissions are not possible.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="kyc">
+                <button class="faq-question">
+                    <span>Can I use documents from another country?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes, as long as you are a <strong>resident of that country</strong>.</p>
+                </div>
+            </div>
+
+            <!-- CERTIFICATE -->
+            <div class="faq-item" data-category="certificate">
+                <button class="faq-question">
+                    <span>How do I verify my certificate is authentic?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Every certificate has a unique <strong>Verification ID</strong> and <strong>QR Code</strong>. Scan the QR or visit <code>verify.html?id=CERT-XXXX</code> to view the certificate details.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="certificate">
+                <button class="faq-question">
+                    <span>When are certificates issued?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        - Passing Phase 1<br>
+                        - Passing Phase 2<br>
+                        - Funded Account activated<br>
+                        - Each payout received
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="certificate">
+                <button class="faq-question">
+                    <span>Can I download my certificate?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes, from your dashboard you can download your certificate as a <strong>PDF</strong>.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =======================================================
+     CTA
+======================================================= -->
+<section class="cta">
+    <div class="container">
+        <div class="cta-box reveal">
+            <h2>Ready to rise?</h2>
+            <p>
+                Choose your account, prove your trading ability,
+                and take the next step toward funded capital.
+            </p>
+            <a href="#challenges" class="btn btn-primary">
+                Choose Your Challenge
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+<footer>
+    <div class="container footer-inner">
+        <div class="footer-logo">
+            <img src="assets/logo-white.svg" alt="RISE FUNDED" />
+            <span>RISE <span>FUNDED</span></span>
+        </div>
+        <div class="footer-links">
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="risk.html">Risk Disclosure</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="copyright">
+            © 2026 RISE FUNDED FZ-LLC. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+
+<!-- =======================================================
+     CHECKOUT
+======================================================= -->
+<div class="checkout-overlay" id="checkoutOverlay">
+    <div class="checkout-shell">
+
+        <div class="checkout-header">
+            <div class="checkout-brand">
+                <img src="assets/logo.svg" alt="RF" />
+                RISE FUNDED — CHECKOUT
+            </div>
+            <button type="button" class="checkout-close" id="checkoutClose">×</button>
+        </div>
+
+        <div class="checkout-body" id="checkoutBody">
+
+            <!-- LEFT -->
+            <div class="checkout-left">
+
+                <div class="checkout-kicker">COMPLETE YOUR ORDER</div>
+                <h2 class="checkout-title">Start your journey.</h2>
+                <p class="checkout-subtitle">
+                    Review your challenge, choose your payout cycle,
+                    apply a discount code, and provide your account information.
+                </p>
+
+                <!-- PAYOUT -->
+                <div class="checkout-section">
+                    <div class="checkout-section-title">SELECT PAYOUT CYCLE</div>
+                    <div class="payout-options">
+                        <label class="payout-option active">
+                            <input type="radio" name="checkoutPayout" value="weekly" checked>
+                            <strong>Weekly</strong>
+                            <span>Every Thursday</span>
+                            <b>65%</b>
+                        </label>
+                        <label class="payout-option">
+                            <input type="radio" name="checkoutPayout" value="biweekly">
+                            <strong>Bi-Weekly</strong>
+                            <span>Every 2 weeks</span>
+                            <b>80%</b>
+                        </label>
+                        <label class="payout-option">
+                            <input type="radio" name="checkoutPayout" value="monthly">
+                            <strong>Monthly</strong>
+                            <span>Monthly distribution</span>
+                            <b>90%</b>
+                        </label>
+                        <label class="payout-option">
+                            <input type="radio" name="checkoutPayout" value="ondemand">
+                            <strong>On Demand</strong>
+                            <span>+10% fee • every 2 weeks</span>
+                            <b>95%</b>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- DISCOUNT -->
+                <div class="checkout-section">
+                    <div class="checkout-section-title">DISCOUNT CODE</div>
+                    <div class="discount-box">
+                        <div class="discount-row">
+                            <div class="discount-input-wrap">
+                                <input type="text" id="discountCode"
+                                       placeholder="Enter your discount code"
+                                       autocomplete="off" spellcheck="false">
+                            </div>
+                            <button type="button" class="discount-apply" id="applyDiscountButton">
+                                APPLY
+                            </button>
+                        </div>
+                        <div class="discount-message" id="discountMessage"></div>
+                        <div class="discount-hint">
+                            Have a promotional code? Enter it above and click Apply.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CUSTOMER -->
+                <div class="checkout-section">
+                    <div class="checkout-section-title">TRADER INFORMATION</div>
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="firstName">FIRST NAME</label>
+                            <input id="firstName" type="text" placeholder="John" autocomplete="given-name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName">LAST NAME</label>
+                            <input id="lastName" type="text" placeholder="Smith" autocomplete="family-name">
+                        </div>
+
+                        <div class="form-group full">
+                            <label for="email">EMAIL ADDRESS</label>
+                            <input id="email" type="email" placeholder="you@example.com" autocomplete="email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="country">COUNTRY</label>
+                            <select id="country">
+                                <option value="">Select country</option>
+                                <option>Afghanistan</option>
+                                <option>United Arab Emirates</option>
+                                <option>Pakistan</option>
+                                <option>India</option>
+                                <option>Iran</option>
+                                <option>Vietnam</option>
+                                <option>Turkey</option>
+                                <option>United Kingdom</option>
+                                <option>United States</option>
+                                <option>Germany</option>
+                                <option>Bangladesh</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">PHONE</label>
+                            <input id="phone" type="tel" placeholder="+93 ..." autocomplete="tel">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT -->
+            <div class="checkout-right">
+                <div class="checkout-summary">
+
+                    <div class="summary-label">ORDER SUMMARY</div>
+                    <div class="summary-plan" id="summaryPlan">1 STEP</div>
+                    <div class="summary-account" id="summaryAccount">$5,000 Trading Account</div>
+
+                    <div class="summary-rules">
+                        <div class="summary-rule">
+                            <span>PROFIT TARGET</span>
+                            <strong id="summaryTarget">10%</strong>
+                        </div>
+                        <div class="summary-rule">
+                            <span>MAX DD</span>
+                            <strong id="summaryMaxDD">10%</strong>
+                        </div>
+                        <div class="summary-rule">
+                            <span>DAILY DD</span>
+                            <strong id="summaryDailyDD">4%</strong>
+                        </div>
+                        <div class="summary-rule">
+                            <span>PROFIT SPLIT</span>
+                            <strong id="summarySplit">80%</strong>
+                        </div>
+                    </div>
+
+                    <div class="summary-line">
+                        <span>Challenge Fee</span>
+                        <strong id="summaryBasePrice">$34</strong>
+                    </div>
+                    <div class="summary-line">
+                        <span>On Demand</span>
+                        <strong id="summaryOnDemand">$0</strong>
+                    </div>
+                    <div class="summary-line">
+                        <span>Payout Cycle</span>
+                        <strong id="summaryPayout">Weekly</strong>
+                    </div>
+                    <div class="summary-line">
+                        <span>Discount</span>
+                        <strong id="summaryDiscount" class="summary-discount">$0</strong>
+                    </div>
+
+                    <div class="summary-total">
+                        <span>TOTAL</span>
+                        <strong id="summaryTotal">$34</strong>
+                    </div>
+
+                    <div class="checkout-note">
+                        <span>✓</span>
+                        <span>
+                            Your order will be created first.
+                            Payment processing will be connected
+                            securely in the next stage.
+                        </span>
+                    </div>
+
+                    <button type="button" class="btn btn-primary checkout-submit" id="placeOrderButton">
+                        Continue to Payment
+                    </button>
+
+                    <div class="secure-line">
+                        🔒 SECURE CHECKOUT • RISE FUNDED
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SUCCESS -->
+        <div class="order-success" id="orderSuccess">
+            <div class="success-icon">✓</div>
+            <h2>Order Created</h2>
+            <p>
+                Your challenge order has been prepared successfully.
+                Payment processing will be connected to this order
+                in the next stage.
+            </p>
+            <div class="order-id-box">
+                Order ID: <strong id="generatedOrderId">RF-000000</strong>
+            </div>
+            <br><br>
+            <button type="button" class="btn btn-primary" id="closeSuccessButton">
+                Back to RISE FUNDED
+            </button>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- =======================================================
+     PROMO POPUP (ساخته می‌شه با JS)
+======================================================= -->
+<div class="promo-popup-overlay" id="promoPopup">
+    <div class="promo-popup">
+        <button class="promo-popup-close" id="promoPopupClose" aria-label="Close">×</button>
+
+        <div class="promo-popup-content">
+            <div class="promo-popup-icon">🎁</div>
+
+            <h2 class="promo-popup-title" id="promoPopupTitle">
+                Special Offer
+            </h2>
+
+            <p class="promo-popup-desc" id="promoPopupDesc">
+                Get a special discount on your next challenge!
+            </p>
+
+            <div class="promo-popup-code-box">
+                <span class="promo-popup-code-label">USE CODE</span>
+                <div class="promo-popup-code" id="promoPopupCode">RISE20</div>
+                <button class="promo-popup-copy" id="promoPopupCopy">
+                    Copy Code
+                </button>
+            </div>
+
+            <div class="promo-popup-percent" id="promoPopupPercent">
+                20% OFF
+            </div>
+
+            <a href="#challenges" class="promo-popup-cta" id="promoPopupCTA">
+                Claim Now →
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!-- =======================================================
+     SCRIPTS
+======================================================= -->
+<script type="module" src="js/main.js"></script>
+
+</body>
+</html>

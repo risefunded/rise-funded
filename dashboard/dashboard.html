@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard — RISE FUNDED</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.45.0/dist/apexcharts.min.js"></script>
+
+    <!-- Certificate Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <link rel="stylesheet" href="dashboard.css">
+
+    <link rel="icon" type="image/svg+xml" href="../assets/logo-white.svg">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-top">
+            <a href="../index.html" class="brand">
+                <img src="../assets/logo.svg" alt="RISE FUNDED" class="brand-mark" />
+                <div class="brand-text">
+                    <strong>RISE</strong>
+                    <span>FUNDED</span>
+                </div>
+            </a>
+            <button class="sidebar-close" id="sidebarClose">×</button>
+        </div>
+
+        <div class="user-mini">
+            <div class="avatar" id="sidebarAvatar">U</div>
+            <div class="user-mini-info">
+                <strong id="sidebarName">Loading...</strong>
+                <span id="sidebarUsername">@trader</span>
+            </div>
+            <div class="online-dot"></div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <div class="nav-label">TRADING</div>
+
+            <a href="#" class="nav-item active" data-section="overview">
+                <span class="nav-icon">⌂</span>
+                <span>Overview</span>
+            </a>
+
+            <a href="#" class="nav-item" data-section="challenges">
+                <span class="nav-icon">▣</span>
+                <span>My Challenges</span>
+            </a>
+
+            <a href="#" class="nav-item" data-section="accounts">
+                <span class="nav-icon">◈</span>
+                <span>Trading Accounts</span>
+            </a>
+
+            <div class="nav-label">FINANCE</div>
+
+            <a href="#" class="nav-item" data-section="payouts">
+                <span class="nav-icon">↗</span>
+                <span>Payouts</span>
+            </a>
+
+            <a href="#" class="nav-item" data-section="transactions">
+                <span class="nav-icon">⇄</span>
+                <span>Transactions</span>
+            </a>
+
+            <div class="nav-label">ACCOUNT</div>
+
+            <a href="#" class="nav-item" data-section="certificates">
+                <span class="nav-icon">◇</span>
+                <span>Certificates</span>
+                <span class="nav-badge" id="certificatesBadge" style="display:none">0</span>
+            </a>
+
+            <a href="#" class="nav-item" data-section="profile">
+                <span class="nav-icon">◎</span>
+                <span>Profile</span>
+                <span class="nav-badge nav-badge-warning" id="kycBadge" style="display:none">!</span>
+            </a>
+
+            <a href="#" class="nav-item" data-section="support">
+                <span class="nav-icon">?</span>
+                <span>Support</span>
+                <span class="nav-badge" id="supportBadge" style="display:none">0</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="rise-card">
+                <div class="rise-card-icon">↑</div>
+                <div>
+                    <strong>Keep rising.</strong>
+                    <span>Trade with discipline.</span>
+                </div>
+            </div>
+
+            <button class="logout-button" id="logoutButton">
+                <span>↪</span>
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN AREA -->
+    <main class="main">
+
+        <header class="topbar">
+
+            <button class="mobile-menu" id="mobileMenu">☰</button>
+
+            <div class="page-heading">
+                <div class="page-eyebrow">TRADER PORTAL</div>
+                <h1 id="pageTitle">Overview</h1>
+            </div>
+
+            <div class="topbar-actions">
+
+                <button class="icon-button notification-button" id="notificationButton">
+                    ♢
+                    <span class="notification-dot" id="notificationDot" style="display:none"></span>
+                </button>
+
+                <div class="top-user">
+                    <div class="top-user-text">
+                        <strong id="topUserName">Trader</strong>
+                        <span>Trader Account</span>
+                    </div>
+                    <div class="top-avatar" id="topAvatar">T</div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <div class="content">
+
+
+            <!-- ==========================================
+                 OVERVIEW
+            =========================================== -->
+
+            <section class="dashboard-section active-section" id="section-overview">
+
+                <div class="welcome-row">
+
+                    <div>
+                        <span class="section-kicker">WELCOME BACK</span>
+                        <h2>
+                            <span id="welcomeName">Trader</span>,
+                            ready to rise?
+                        </h2>
+                        <p>Monitor your challenges, trading accounts and payouts from one place.</p>
+                    </div>
+
+                    <a href="../index.html#challenges" class="primary-button">
+                        + Start New Challenge
+                    </a>
+
+                </div>
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-card-top">
+                            <span>Total Accounts</span>
+                            <div class="stat-icon purple">◈</div>
+                        </div>
+                        <strong id="totalAccounts">0</strong>
+                        <small>Active trading accounts</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-top">
+                            <span>Active Challenges</span>
+                            <div class="stat-icon blue">▣</div>
+                        </div>
+                        <strong id="activeChallenges">0</strong>
+                        <small>Currently in progress</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-top">
+                            <span>Total Profit</span>
+                            <div class="stat-icon green">↗</div>
+                        </div>
+                        <strong id="totalProfit">$0.00</strong>
+                        <small class="positive">Trading performance</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-top">
+                            <span>Total Payouts</span>
+                            <div class="stat-icon gold">$</div>
+                        </div>
+                        <strong id="totalPayouts">$0.00</strong>
+                        <small>Lifetime withdrawals</small>
+                    </div>
+
+                </div>
+
+                <div class="section-header">
+
+                    <div>
+                        <span class="section-kicker">PERFORMANCE</span>
+                        <h3>Active Trading Account</h3>
+                    </div>
+
+                    <a href="#" class="text-link" data-section-link="accounts">
+                        View all accounts →
+                    </a>
+
+                </div>
+
+                <div class="account-card">
+
+                    <div class="account-card-header">
+
+                        <div class="account-identity">
+                            <div class="account-symbol">
+                                <img src="../assets/logo-white.svg" alt="RF" />
+                            </div>
+                            <div>
+                                <span class="account-label">FUNDED ACCOUNT</span>
+                                <h3 id="accountSize">$50,000</h3>
+                                <span class="account-id" id="accountId">RF-000000</span>
+                            </div>
+                        </div>
+
+                        <div class="account-status">
+                            <span class="status-dot"></span>
+                            ACTIVE
+                        </div>
+
+                    </div>
+
+                    <div class="account-main">
+
+                        <div class="account-profit">
+                            <span>Current Profit</span>
+                            <strong id="accountProfit">+$0.00</strong>
+                            <small id="accountProfitPercent">+0.00%</small>
+                        </div>
+
+                        <div class="account-metrics">
+
+                            <div class="metric">
+                                <span>Balance</span>
+                                <strong id="accountBalance">$50,000.00</strong>
+                            </div>
+
+                            <div class="metric">
+                                <span>Equity</span>
+                                <strong id="accountEquity">$50,000.00</strong>
+                            </div>
+
+                            <div class="metric">
+                                <span>Daily Drawdown</span>
+                                <strong id="dailyDrawdown">0.00%</strong>
+                            </div>
+
+                            <div class="metric">
+                                <span>Max Drawdown</span>
+                                <strong id="maxDrawdown">0.00%</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="account-progress">
+
+                        <div class="progress-heading">
+                            <span>Profit Target</span>
+                            <strong><span id="profitProgress">0.00</span>%</strong>
+                        </div>
+
+                        <div class="progress-track">
+                            <div class="progress-fill" id="profitProgressBar" style="width:0%"></div>
+                        </div>
+
+                        <div class="progress-footer">
+                            <span>Current: <b id="currentProfitSmall">$0</b></span>
+                            <span>Target: <b id="targetProfitSmall">$5,000</b></span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="two-column">
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <span class="section-kicker">ACTIVITY</span>
+                                <h3>Recent Transactions</h3>
+                            </div>
+                            <a href="#" class="text-link" data-section-link="transactions">
+                                View all
+                            </a>
+                        </div>
+
+                        <div class="transactions-list" id="recentTransactions">
+                            <div class="empty-state small">
+                                <div class="empty-icon">⇄</div>
+                                <strong>No transactions yet</strong>
+                                <span>Your activity will appear here.</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="panel payout-preview">
+
+                        <div class="panel-header">
+                            <div>
+                                <span class="section-kicker">WITHDRAWALS</span>
+                                <h3>Payout Overview</h3>
+                            </div>
+                            <a href="#" class="text-link" data-section-link="payouts">
+                                View payouts
+                            </a>
+                        </div>
+
+                        <div class="payout-big">
+                            <span>Total Received</span>
+                            <strong id="payoutPreviewAmount">$0.00</strong>
+                            <div class="payout-status-line">
+                                <span class="status-dot"></span>
+                                No pending payouts
+                            </div>
+                        </div>
+
+                        <div class="payout-info">
+                            <div>
+                                <span>Next payout</span>
+                                <strong id="nextPayout">—</strong>
+                            </div>
+                            <div>
+                                <span>Profit split</span>
+                                <strong id="dashboardSplit">—</strong>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==========================================
+                 CHALLENGES
+            =========================================== -->
+
+            <section class="dashboard-section" id="section-challenges">
+
+                <div class="page-section-header">
+
+                    <div>
+                        <span class="section-kicker">TRADING</span>
+                        <h2>My Challenges</h2>
+                        <p>Track every challenge and its current status.</p>
+                    </div>
+
+                    <a href="../index.html#challenges" class="primary-button">
+                        + Buy Challenge
+                    </a>
+
+                </div>
+
+                <div class="challenge-list" id="challengeList">
+
+                    <div class="empty-state">
+                        <div class="empty-icon">▣</div>
+                        <strong>No challenges yet</strong>
+                        <span>Your purchased challenges will appear here.</span>
+
+                        <a href="../index.html#challenges" class="primary-button">
+                            Explore Challenges
+                        </a>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==========================================
+                 ACCOUNTS
+            =========================================== -->
+
+            <section class="dashboard-section" id="section-accounts">
+
+                <div class="page-section-header">
+
+                    <div>
+                        <span class="section-kicker">TRADING</span>
+                        <h2>Trading Accounts</h2>
+                        <p>Monitor your funded accounts, equity curve and critical events.</p>
+                    </div>
+
+                    <select class="accounts-selector" id="accountSelector" style="display:none">
+                    </select>
+
+                </div>
+
+                <div class="accounts-grid" id="accountsEmptyState">
+
+                    <div class="empty-state">
+                        <div class="empty-icon">◈</div>
+                        <strong>No trading accounts</strong>
+                        <span>Your active accounts will appear here.</span>
+                    </div>
+
+                </div>
+
+                <div class="account-detail" id="accountDetail" style="display:none">
+
+                    <div class="account-detail-header">
+
+                        <div class="account-detail-identity">
+                            <div class="account-detail-symbol">📊</div>
+                            <div>
+                                <div class="account-detail-plan" id="detailPlanName">—</div>
+                                <h3 id="detailAccountSize">$0</h3>
+                                <span class="account-detail-id" id="detailAccountId">—</span>
+                            </div>
+                        </div>
+
+                        <div class="account-detail-status" id="detailStatus">
+                            <span class="status-dot"></span>
+                            ACTIVE
+                        </div>
+
+                    </div>
+
+                    <div class="account-live-stats">
+
+                        <div class="live-stat">
+                            <span>Balance</span>
+                            <strong id="detailBalance">$0</strong>
+                        </div>
+
+                        <div class="live-stat">
+                            <span>Equity</span>
+                            <strong id="detailEquity">$0</strong>
+                        </div>
+
+                        <div class="live-stat">
+                            <span>Net P&L</span>
+                            <strong id="detailProfit">$0</strong>
+                        </div>
+
+                        <div class="live-stat">
+                            <span>Win Rate</span>
+                            <strong id="detailWinRate">0%</strong>
+                        </div>
+
+                        <div class="live-stat">
+                            <span>Profit Factor</span>
+                            <strong id="detailProfitFactor">0.00</strong>
+                        </div>
+
+                        <div class="live-stat">
+                            <span>Total Trades</span>
+                            <strong id="detailTotalTrades">0</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="chart-card">
+
+                        <div class="chart-card-header">
+                            <div>
+                                <div class="section-kicker">PERFORMANCE</div>
+                                <h3>Equity Curve</h3>
+                            </div>
+                            <div class="chart-legend">
+                                <span class="legend-item">
+                                    <span class="legend-dot legend-balance"></span>
+                                    Balance
+                                </span>
+                                <span class="legend-item">
+                                    <span class="legend-dot legend-equity"></span>
+                                    Equity
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="chart-wrapper">
+                            <div id="equityChart"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="critical-events-wrapper" id="criticalEventsWrapper">
+
+                        <div class="critical-card critical-card-danger" id="drawdownBreachCard" style="display:none">
+                            <div class="critical-card-header">
+                                <div class="critical-icon critical-icon-danger">🔴</div>
+                                <div>
+                                    <div class="critical-kicker">MAX DRAWDOWN BREACH</div>
+                                    <h3>Rule Violation Detected</h3>
+                                </div>
+                            </div>
+
+                            <div class="critical-details">
+                                <div class="critical-detail">
+                                    <span>Date</span>
+                                    <strong id="breachDate">—</strong>
+                                </div>
+                                <div class="critical-detail">
+                                    <span>Time</span>
+                                    <strong id="breachTime">—</strong>
+                                </div>
+                                <div class="critical-detail">
+                                    <span>Equity at Breach</span>
+                                    <strong class="critical-value-danger" id="breachEquity">—</strong>
+                                </div>
+                                <div class="critical-detail">
+                                    <span>Balance at Breach</span>
+                                    <strong id="breachBalance">—</strong>
+                                </div>
+                                <div class="critical-detail">
+                                    <span>Drawdown %</span>
+                                    <strong class="critical-value-danger" id="breachPct">—</strong>
+                                </div>
+                                <div class="critical-detail">
+                                    <span>Allowed Limit</span>
+                                    <strong id="breachLimit">—</strong>
+                                </div>
+                            </div>
+
+                            <div class="critical-note critical-note-danger">
+                                ⚠️ This account exceeded the maximum drawdown limit.
+                            </div>
+                        </div>
+
+                        <div class="critical-card critical-card-success" id="peakEquityCard" style="display:none">
+                            <div class="critical-card-header">
+                                <div class="critical-icon critical-icon-success">🟢</div>
+                                <div>
+                                    <div class="critical-kicker">PEAK EQUITY</div>
+                                    <h3>Best Performance Moment</h3>
+                                </div>
+                            </div>
+
+                            <div class="critical-details">
+                                <div class="critical-detail">
+                                    <span>Date</span>
+                                    <strong id="peakDate">—</strong>
+                                </div>
+                                <div class="critical-detail">
+                                    <span>Time</span>
+                                    <strong id="peakTime">—</strong>
+                                </div>
+                                <div class="critical-detail">
+                                    <span>Peak Equity</span>
+                                    <strong class="critical-value-success" id="peakEquity">—</strong>
+                                </div>
+                                <div class="critical-detail">
+                                    <span>Balance</span>
+                                    <strong id="peakBalance">—</strong>
+                                </div>
+                                <div class="critical-detail">
+                                    <span>Profit %</span>
+                                    <strong class="critical-value-success" id="peakProfitPct">—</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="critical-card critical-card-warning" id="dailyBreachesCard" style="display:none">
+                            <div class="critical-card-header">
+                                <div class="critical-icon critical-icon-warning">🟡</div>
+                                <div>
+                                    <div class="critical-kicker">DAILY DRAWDOWN</div>
+                                    <h3>Daily Rule Violations</h3>
+                                </div>
+                            </div>
+
+                            <div class="daily-breaches-list" id="dailyBreachesList">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="chart-card">
+
+                        <div class="chart-card-header">
+                            <div>
+                                <div class="section-kicker">ACTIVITY</div>
+                                <h3>Daily P&L</h3>
+                            </div>
+                            <div class="calendar-month" id="calendarMonth">—</div>
+                        </div>
+
+                        <div class="calendar-wrapper" id="dailyPnlCalendar">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==========================================
+                 PAYOUTS (با Withdrawal)
+            =========================================== -->
+
+            <section class="dashboard-section" id="section-payouts">
+
+                <div class="page-section-header">
+
+                    <div>
+                        <span class="section-kicker">FINANCE</span>
+                        <h2>Payouts</h2>
+                        <p>Review your payout history and request withdrawals.</p>
+                    </div>
+
+                    <button type="button" class="primary-button" id="requestWithdrawalBtn">
+                        + Request Withdrawal
+                    </button>
+
+                </div>
+
+                <div class="finance-summary">
+
+                    <div class="finance-card">
+                        <span>Total Paid</span>
+                        <strong id="payoutTotal">0.00</strong>
+                        <small>USD</small>
+                    </div>
+
+                    <div class="finance-card">
+                        <span>Pending</span>
+                        <strong id="payoutPending">0.00</strong>
+                        <small>USD</small>
+                    </div>
+
+                    <div class="finance-card">
+                        <span>Successful Payouts</span>
+                        <strong id="payoutCount">0</strong>
+                        <small>Completed</small>
+                    </div>
+
+                </div>
+
+
+                <!-- WITHDRAWAL REQUESTS LIST -->
+                <div class="section-header" style="margin-top:32px">
+                    <div>
+                        <span class="section-kicker">WITHDRAWALS</span>
+                        <h3>Withdrawal Requests</h3>
+                    </div>
+                </div>
+
+                <div class="withdrawals-list" id="withdrawalsList">
+                    <div class="empty-state small">
+                        <div class="empty-icon">↑</div>
+                        <strong>No withdrawal requests yet</strong>
+                        <span>Request a withdrawal to get started.</span>
+                    </div>
+                </div>
+
+
+                <div class="section-header" style="margin-top:32px">
+                    <div>
+                        <span class="section-kicker">HISTORY</span>
+                        <h3>Payout History</h3>
+                    </div>
+                </div>
+
+                <div class="table-panel">
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Payout ID</th>
+                                    <th>Account</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="payoutTable">
+                                <tr>
+                                    <td colspan="5">
+                                        <div class="table-empty">
+                                            No payout records yet.
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==========================================
+                 TRANSACTIONS
+            =========================================== -->
+
+            <section class="dashboard-section" id="section-transactions">
+
+                <div class="page-section-header">
+
+                    <div>
+                        <span class="section-kicker">FINANCE</span>
+                        <h2>Transactions</h2>
+                        <p>All account and payment activity in one place.</p>
+                    </div>
+
+                </div>
+
+                <div class="table-panel">
+
+                    <div class="table-header">
+                        <h3>Transaction History</h3>
+                    </div>
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Transaction</th>
+                                    <th>Reference</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="transactionsTable">
+                                <tr>
+                                    <td colspan="5">
+                                        <div class="table-empty">
+                                            No transactions yet.
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==========================================
+                 CERTIFICATES
+            =========================================== -->
+
+            <section class="dashboard-section" id="section-certificates">
+
+                <div class="page-section-header">
+
+                    <div>
+                        <span class="section-kicker">ACHIEVEMENT</span>
+                        <h2>Certificates</h2>
+                        <p>Your RISE FUNDED achievements and certificates.</p>
+                    </div>
+
+                    <button type="button" class="primary-button" id="requestCertButton">
+                        + Request Certificate
+                    </button>
+
+                </div>
+
+                <div class="cert-eligibility" id="certEligibility" style="display:none">
+                </div>
+
+                <div class="certificate-grid" id="certificateGrid">
+
+                    <div class="empty-state">
+                        <div class="empty-icon">◇</div>
+                        <strong>No certificates yet</strong>
+                        <span>Certificates will appear here when you achieve eligible milestones.</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==========================================
+                 PROFILE (با KYC)
+            =========================================== -->
+
+            <section class="dashboard-section" id="section-profile">
+
+                <div class="page-section-header">
+
+                    <div>
+                        <span class="section-kicker">ACCOUNT</span>
+                        <h2>Profile</h2>
+                        <p>Manage your personal account information.</p>
+                    </div>
+
+                </div>
+
+                <div class="profile-layout">
+
+                    <div class="profile-card">
+
+                        <div class="profile-avatar" id="profileAvatar">U</div>
+
+                        <h3 id="profileFullName">Trader</h3>
+
+                        <span id="profileUsername">@trader</span>
+
+                        <div class="profile-badge">
+                            VERIFIED TRADER
+                        </div>
+
+                    </div>
+
+                    <div class="profile-details">
+
+                        <div class="profile-detail">
+                            <span>First Name</span>
+                            <strong id="profileFirstName">—</strong>
+                        </div>
+
+                        <div class="profile-detail">
+                            <span>Last Name</span>
+                            <strong id="profileLastName">—</strong>
+                        </div>
+
+                        <div class="profile-detail">
+                            <span>Email</span>
+                            <strong id="profileEmail">—</strong>
+                        </div>
+
+                        <div class="profile-detail">
+                            <span>Country</span>
+                            <strong id="profileCountry">—</strong>
+                        </div>
+
+                        <div class="profile-detail">
+                            <span>Phone</span>
+                            <strong id="profilePhone">—</strong>
+                        </div>
+
+                        <div class="profile-detail">
+                            <span>Account Status</span>
+                            <strong class="profile-active">ACTIVE</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==========================================
+                     KYC SECTION
+                =========================================== -->
+
+                <div class="kyc-section" id="kycSection">
+
+                    <div class="kyc-section-header">
+                        <div>
+                            <span class="section-kicker">IDENTITY</span>
+                            <h3>KYC Verification</h3>
+                            <p>Verify your identity to unlock withdrawals.</p>
+                        </div>
+
+                        <div class="kyc-status-badge" id="kycStatusBadge">
+                            <!-- ساخته می‌شه با JS -->
+                        </div>
+                    </div>
+
+                    <div class="kyc-content" id="kycContent">
+                        <!-- ساخته می‌شه با JS -->
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==========================================
+                 SUPPORT
+            =========================================== -->
+
+            <section class="dashboard-section" id="section-support">
+
+                <div class="page-section-header">
+
+                    <div>
+                        <span class="section-kicker">HELP CENTER</span>
+                        <h2>Support</h2>
+                        <p>Create a ticket or chat with our team. We typically reply within a few minutes.</p>
+                    </div>
+
+                    <button type="button" class="primary-button" id="newTicketBtn">
+                        + New Ticket
+                    </button>
+
+                </div>
+
+                <div class="tickets-list" id="ticketsList">
+                    <div class="empty-state">
+                        <div class="empty-icon">?</div>
+                        <strong>No support tickets yet</strong>
+                        <span>Create a ticket and our team will help you shortly.</span>
+
+                        <button type="button" class="primary-button" id="emptyNewTicketBtn">
+                            Create First Ticket
+                        </button>
+                    </div>
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- ==========================================
+     MT CREDENTIALS MODAL
+=========================================== -->
+
+<div class="mt-modal" id="mtModal">
+    <div class="mt-modal-content">
+        <div class="mt-modal-header">
+            <div>
+                <div class="section-kicker">METATRADER ACCOUNT</div>
+                <h3>Your Trading Credentials</h3>
+            </div>
+            <button class="mt-modal-close" id="mtModalClose">×</button>
+        </div>
+        <div class="mt-modal-body" id="mtModalBody"></div>
+    </div>
+</div>
+
+
+<!-- ==========================================
+     NEW TICKET MODAL
+=========================================== -->
+
+<div class="ticket-modal" id="ticketModal">
+    <div class="ticket-modal-content">
+        <div class="ticket-modal-header">
+            <div>
+                <div class="section-kicker">NEW TICKET</div>
+                <h3>How can we help?</h3>
+            </div>
+            <button class="ticket-modal-close" id="ticketModalClose">×</button>
+        </div>
+
+        <div class="ticket-modal-body">
+            <div class="form-group">
+                <label for="ticketSubject">Subject</label>
+                <input type="text" id="ticketSubject" placeholder="Brief summary of your issue" maxlength="100">
+            </div>
+
+            <div class="form-group">
+                <label for="ticketMessage">Message</label>
+                <textarea id="ticketMessage" placeholder="Describe your issue in detail..." rows="6" maxlength="2000"></textarea>
+            </div>
+
+            <div class="ticket-modal-error" id="ticketModalError"></div>
+        </div>
+
+        <div class="ticket-modal-footer">
+            <button type="button" class="btn-cancel-ticket" id="cancelTicketBtn">Cancel</button>
+            <button type="button" class="btn-create-ticket" id="createTicketBtn">Create Ticket</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- ==========================================
+     CHAT PANEL
+=========================================== -->
+
+<div class="chat-panel" id="chatPanel">
+    <div class="chat-panel-inner">
+        <div class="chat-panel-header">
+            <button class="chat-back-btn" id="chatBackBtn">←</button>
+            <div class="chat-panel-title">
+                <strong id="chatPanelSubject">Ticket</strong>
+                <span class="chat-panel-status open" id="chatPanelStatus">Open</span>
+            </div>
+        </div>
+
+        <div class="chat-messages" id="chatMessages"></div>
+
+        <div class="chat-input-row">
+            <textarea id="chatInput" placeholder="Type your message..." rows="1"></textarea>
+            <button type="button" class="chat-send-btn" id="chatSendBtn">Send →</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- ==========================================
+     REQUEST CERTIFICATE MODAL
+=========================================== -->
+
+<div class="cert-request-modal" id="certRequestModal">
+    <div class="cert-request-modal-content">
+        <div class="cert-request-modal-header">
+            <div>
+                <div class="section-kicker">REQUEST CERTIFICATE</div>
+                <h3>Select Certificate Type</h3>
+            </div>
+            <button class="cert-request-modal-close" id="certRequestModalClose">×</button>
+        </div>
+
+        <div class="cert-request-modal-body">
+            <p class="cert-request-hint">
+                Choose the certificate you'd like to request. Our team will review and approve it.
+            </p>
+
+            <div class="cert-request-options" id="certRequestOptions"></div>
+
+            <div class="cert-request-error" id="certRequestError"></div>
+        </div>
+
+        <div class="cert-request-modal-footer">
+            <button type="button" class="btn-cancel-cert" id="certRequestCancelBtn">Cancel</button>
+            <button type="button" class="btn-submit-cert" id="certRequestSubmitBtn">Submit Request</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- ==========================================
+     CERTIFICATE PREVIEW MODAL
+=========================================== -->
+
+<div class="cert-preview-modal" id="certPreviewModal">
+    <div class="cert-preview-modal-content">
+        <div class="cert-preview-modal-header">
+            <div>
+                <div class="section-kicker">CERTIFICATE PREVIEW</div>
+                <h3>Your Certificate</h3>
+            </div>
+            <button class="cert-preview-modal-close" id="certPreviewModalClose">×</button>
+        </div>
+
+        <div class="cert-preview-modal-body">
+            <div class="cert-canvas-wrapper">
+                <div class="cert-canvas" id="certCanvas"></div>
+            </div>
+        </div>
+
+        <div class="cert-preview-modal-footer">
+            <button type="button" class="btn-close-cert" id="certPreviewCloseBtn">Close</button>
+            <button type="button" class="btn-download-cert" id="certDownloadBtn">⬇ Download PDF</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- ==========================================
+     KYC MODAL (NEW)
+=========================================== -->
+
+<div class="kyc-modal" id="kycModal">
+    <div class="kyc-modal-content">
+
+        <div class="kyc-modal-header">
+            <div>
+                <div class="section-kicker">IDENTITY VERIFICATION</div>
+                <h3>KYC Verification</h3>
+            </div>
+            <button class="kyc-modal-close" id="kycModalClose">×</button>
+        </div>
+
+        <div class="kyc-modal-body">
+
+            <div class="kyc-info-box">
+                <div class="kyc-info-icon">📧</div>
+                <div>
+                    <strong>Documents will be sent by email</strong>
+                    <p>
+                        You'll be asked to attach your ID document and a selfie holding it.
+                        Our team will review your documents within 24 hours.
+                    </p>
+                </div>
+            </div>
+
+            <div class="kyc-form">
+
+                <div class="kyc-form-row">
+                    <label for="kycFullName">Full Legal Name</label>
+                    <input type="text" id="kycFullName" placeholder="e.g. Mohammad Shirzad" autocomplete="name">
+                </div>
+
+                <div class="kyc-form-row">
+                    <label for="kycDocumentType">Document Type</label>
+                    <select id="kycDocumentType">
+                        <option value="">— Select document type —</option>
+                        <option value="passport">Passport</option>
+                        <option value="national_id">National ID Card</option>
+                        <option value="driver_license">Driver's License</option>
+                    </select>
+                </div>
+
+                <div class="kyc-form-row">
+                    <label for="kycCountry">Country</label>
+                    <select id="kycCountry">
+                        <option value="">— Select your country —</option>
+                        <option>Afghanistan</option>
+                        <option>United Arab Emirates</option>
+                        <option>Pakistan</option>
+                        <option>India</option>
+                        <option>Iran</option>
+                        <option>Vietnam</option>
+                        <option>Turkey</option>
+                        <option>United Kingdom</option>
+                        <option>United States</option>
+                        <option>Germany</option>
+                        <option>Bangladesh</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="kyc-form-row">
+                    <label for="kycDocumentNumber">Document Number</label>
+                    <input type="text" id="kycDocumentNumber" placeholder="e.g. AB1234567" autocomplete="off">
+                </div>
+
+                <div class="kyc-error" id="kycError"></div>
+
+            </div>
+
+        </div>
+
+        <div class="kyc-modal-footer">
+            <button type="button" class="btn-cancel-kyc" id="kycCancelBtn">Cancel</button>
+            <button type="button" class="btn-submit-kyc" id="kycSubmitBtn">
+                📧 Send Documents via Email
+            </button>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ==========================================
+     WITHDRAWAL MODAL (NEW)
+=========================================== -->
+
+<div class="withdrawal-modal" id="withdrawalModal">
+    <div class="withdrawal-modal-content">
+
+        <div class="withdrawal-modal-header">
+            <div>
+                <div class="section-kicker">WITHDRAWAL REQUEST</div>
+                <h3>Request a Payout</h3>
+            </div>
+            <button class="withdrawal-modal-close" id="withdrawalModalClose">×</button>
+        </div>
+
+        <div class="withdrawal-modal-body">
+
+            <div class="withdrawal-info-box">
+                <div class="withdrawal-info-icon">💰</div>
+                <div>
+                    <strong>Minimum withdrawal: $10</strong>
+                    <p>
+                        Withdrawals are processed within 24 hours after approval.
+                        Only available for funded accounts.
+                    </p>
+                </div>
+            </div>
+
+            <div class="withdrawal-form">
+
+                <div class="withdrawal-form-row">
+                    <label for="wdAccount">Account</label>
+                    <select id="wdAccount">
+                        <option value="">— Select an account —</option>
+                    </select>
+                </div>
+
+                <div class="withdrawal-form-row">
+                    <label for="wdAmount">Amount (USD)</label>
+                    <input type="number" id="wdAmount" placeholder="100.00" min="10" step="0.01">
+                    <small class="withdrawal-hint" id="wdAvailableHint">Available: $0.00</small>
+                </div>
+
+                <div class="withdrawal-form-row">
+                    <label for="wdNetwork">Network</label>
+                    <select id="wdNetwork">
+                        <option value="">— Select network —</option>
+                        <option value="TRC20">USDT — TRC20 (Tron)</option>
+                        <option value="BEP20">USDT — BEP20 (BSC)</option>
+                        <option value="ERC20">USDT — ERC20 (Ethereum)</option>
+                    </select>
+                </div>
+
+                <div class="withdrawal-form-row">
+                    <label for="wdWallet">Wallet Address</label>
+                    <input type="text" id="wdWallet" placeholder="Enter your USDT wallet address" autocomplete="off">
+                </div>
+
+                <div class="withdrawal-error" id="withdrawalError"></div>
+
+            </div>
+
+        </div>
+
+        <div class="withdrawal-modal-footer">
+            <button type="button" class="btn-cancel-wd" id="withdrawalCancelBtn">Cancel</button>
+            <button type="button" class="btn-submit-wd" id="withdrawalSubmitBtn">Submit Request</button>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ==========================================
+     LOADING SCREEN
+=========================================== -->
+
+<div class="loading-screen" id="loadingScreen">
+
+    <div class="loading-logo">
+        <img src="../assets/logo-white.svg" alt="RISE FUNDED" class="loading-mark" />
+        <div>
+            <strong>RISE</strong>
+            <span>FUNDED</span>
+        </div>
+    </div>
+
+    <div class="loader"></div>
+
+    <p>Loading your trader portal...</p>
+
+</div>
+
+
+<!-- ==========================================
+     NOTIFICATION PANEL
+=========================================== -->
+
+<div class="notification-panel" id="notificationPanel">
+
+    <div class="notification-panel-header">
+        <strong>Notifications</strong>
+        <button id="closeNotifications">×</button>
+    </div>
+
+    <div class="notification-list" id="notificationList">
+        <div class="notification-empty">
+            <div>♢</div>
+            <strong>No new notifications</strong>
+            <span>You're all caught up.</span>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="qrcode-lib.js"></script>
+
+<script type="module" src="dashboard.js"></script>
+
+</body>
+</html>

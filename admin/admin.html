@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Panel — RISE FUNDED</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.45.0/apexcharts.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<link rel="stylesheet" href="admin.css">
+
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+</head>
+
+<body>
+
+<!-- LOADING -->
+<div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p>Loading admin panel...</p>
+</div>
+
+
+<!-- ACCESS DENIED -->
+<div class="denied" id="denied" style="display:none">
+    <div class="denied-icon">🚫</div>
+    <h1>Access Denied</h1>
+    <p>You don't have admin permissions to view this page.</p>
+    <a href="../index.html" class="btn-primary">Back to Home</a>
+</div>
+
+
+<!-- MAIN -->
+<div class="admin" id="adminPanel" style="display:none">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <img src="../assets/logo.svg" alt="RISE FUNDED" class="brand-mark" />
+            <div>
+                <strong>RISE</strong>
+                <span>ADMIN</span>
+            </div>
+        </div>
+
+        <nav class="nav">
+            <a href="#" class="nav-item active" data-tab="pending">
+                <span>⏳</span> Pending Orders
+                <span class="badge" id="pendingBadge">0</span>
+            </a>
+            <a href="#" class="nav-item" data-tab="approved">
+                <span>✅</span> Approved
+            </a>
+            <a href="#" class="nav-item" data-tab="rejected">
+                <span>❌</span> Rejected
+            </a>
+            <a href="#" class="nav-item" data-tab="all">
+                <span>📋</span> All Orders
+            </a>
+            <a href="#" class="nav-item" data-tab="accounts">
+                <span>📊</span> Accounts
+                <span class="badge" id="accountsBadge" style="display:none">0</span>
+            </a>
+            <a href="#" class="nav-item" data-tab="certificates">
+                <span>🎓</span> Certificates
+                <span class="badge" id="certsBadge" style="display:none">0</span>
+            </a>
+            <a href="#" class="nav-item" data-tab="kyc">
+                <span>🛡️</span> KYC Requests
+                <span class="badge" id="kycBadge" style="display:none">0</span>
+            </a>
+            <a href="#" class="nav-item" data-tab="withdrawals">
+                <span>💸</span> Withdrawals
+                <span class="badge" id="withdrawalsBadge" style="display:none">0</span>
+            </a>
+            <a href="#" class="nav-item" data-tab="support">
+                <span>💬</span> Support
+                <span class="badge" id="supportBadge" style="display:none">0</span>
+            </a>
+            <a href="#" class="nav-item" data-tab="promotions">
+                <span>🎁</span> Promotions
+            </a>
+            <a href="import.html" class="nav-item">
+                <span>📥</span> Import MT5
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="admin-info">
+                <div class="admin-avatar" id="adminAvatar">A</div>
+                <div>
+                    <strong id="adminName">Admin</strong>
+                    <span id="adminEmail">admin@rise-funded.com</span>
+                </div>
+            </div>
+            <button class="logout-btn" id="logoutBtn">
+                Logout
+            </button>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <header class="topbar">
+            <div>
+                <div class="kicker" id="pageKicker">PENDING ORDERS</div>
+                <h1 id="pageTitle">Pending Orders</h1>
+            </div>
+            <button class="refresh-btn" id="refreshBtn">
+                🔄 Refresh
+            </button>
+        </header>
+
+
+        <!-- STATS -->
+        <div class="stats" id="statsRow">
+            <div class="stat-card">
+                <span>Pending</span>
+                <strong id="statPending">0</strong>
+            </div>
+            <div class="stat-card">
+                <span>Approved</span>
+                <strong id="statApproved">0</strong>
+            </div>
+            <div class="stat-card">
+                <span>Rejected</span>
+                <strong id="statRejected">0</strong>
+            </div>
+            <div class="stat-card">
+                <span>Total Revenue</span>
+                <strong id="statRevenue">$0</strong>
+            </div>
+        </div>
+
+
+        <!-- ORDERS LIST -->
+        <div class="orders" id="ordersList"></div>
+
+
+        <!-- ==========================================
+             ACCOUNTS TAB
+        =========================================== -->
+
+        <div class="accounts-panel" id="accountsPanel" style="display:none">
+
+            <div class="accounts-monitor-stats" id="accountsMonitorStats">
+                <div class="monitor-stat">
+                    <div class="monitor-icon">📊</div>
+                    <div>
+                        <span>Total Accounts</span>
+                        <strong id="monitorTotal">0</strong>
+                    </div>
+                </div>
+
+                <div class="monitor-stat monitor-safe">
+                    <div class="monitor-icon">🟢</div>
+                    <div>
+                        <span>Safe</span>
+                        <strong id="monitorSafe">0</strong>
+                    </div>
+                </div>
+
+                <div class="monitor-stat monitor-breach">
+                    <div class="monitor-icon">🔴</div>
+                    <div>
+                        <span>Breached</span>
+                        <strong id="monitorBreached">0</strong>
+                    </div>
+                </div>
+
+                <div class="monitor-stat monitor-near">
+                    <div class="monitor-icon">🟡</div>
+                    <div>
+                        <span>Near Limit</span>
+                        <strong id="monitorNear">0</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accounts-toolbar">
+                <div class="accounts-search">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="accountsSearchInput" placeholder="Search by name, email, MT login..." autocomplete="off">
+                </div>
+
+                <div class="accounts-filters" id="accountsFilters">
+                    <button class="accounts-filter active" data-status="all">All</button>
+                    <button class="accounts-filter" data-status="safe">🟢 Safe</button>
+                    <button class="accounts-filter" data-status="breached">🔴 Breached</button>
+                    <button class="accounts-filter" data-status="near">🟡 Near Limit</button>
+                </div>
+            </div>
+
+            <div class="accounts-list" id="accountsList">
+                <div class="empty">
+                    <div class="empty-icon">📊</div>
+                    <strong>No accounts yet</strong>
+                    <p>Approved MT accounts will appear here.</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- ==========================================
+             CERTIFICATES TAB
+        =========================================== -->
+
+        <div class="certificates-panel" id="certificatesPanel" style="display:none">
+
+            <div class="certs-stats">
+                <div class="cert-stat">
+                    <div class="cert-stat-icon">⏳</div>
+                    <div>
+                        <span>Pending</span>
+                        <strong id="certStatPending">0</strong>
+                    </div>
+                </div>
+
+                <div class="cert-stat cert-stat-approved">
+                    <div class="cert-stat-icon">✅</div>
+                    <div>
+                        <span>Approved</span>
+                        <strong id="certStatApproved">0</strong>
+                    </div>
+                </div>
+
+                <div class="cert-stat cert-stat-rejected">
+                    <div class="cert-stat-icon">❌</div>
+                    <div>
+                        <span>Rejected</span>
+                        <strong id="certStatRejected">0</strong>
+                    </div>
+                </div>
+
+                <div class="cert-stat cert-stat-issued">
+                    <div class="cert-stat-icon">🎓</div>
+                    <div>
+                        <span>Total Issued</span>
+                        <strong id="certStatIssued">0</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="certs-toolbar">
+                <div class="certs-filters" id="certsFilters">
+                    <button class="cert-filter active" data-status="pending">⏳ Pending</button>
+                    <button class="cert-filter" data-status="approved">✅ Approved</button>
+                    <button class="cert-filter" data-status="rejected">❌ Rejected</button>
+                    <button class="cert-filter" data-status="all">📋 All</button>
+                </div>
+
+                <button type="button" class="new-cert-btn" id="newCertBtn">
+                    + New Certificate
+                </button>
+            </div>
+
+            <div class="certs-list" id="certsList">
+                <div class="empty">
+                    <div class="empty-icon">🎓</div>
+                    <strong>No certificate requests</strong>
+                    <p>Requests will appear here when users submit them.</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- ==========================================
+             KYC TAB (NEW)
+        =========================================== -->
+
+        <div class="kyc-panel" id="kycPanel" style="display:none">
+
+            <div class="kyc-stats">
+                <div class="kyc-stat">
+                    <div class="kyc-stat-icon">⏳</div>
+                    <div>
+                        <span>Pending</span>
+                        <strong id="kycStatPending">0</strong>
+                    </div>
+                </div>
+
+                <div class="kyc-stat kyc-stat-approved">
+                    <div class="kyc-stat-icon">✅</div>
+                    <div>
+                        <span>Verified</span>
+                        <strong id="kycStatVerified">0</strong>
+                    </div>
+                </div>
+
+                <div class="kyc-stat kyc-stat-rejected">
+                    <div class="kyc-stat-icon">❌</div>
+                    <div>
+                        <span>Rejected</span>
+                        <strong id="kycStatRejected">0</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kyc-toolbar">
+                <div class="kyc-filters" id="kycFilters">
+                    <button class="kyc-filter active" data-status="pending">⏳ Pending</button>
+                    <button class="kyc-filter" data-status="verified">✅ Verified</button>
+                    <button class="kyc-filter" data-status="rejected">❌ Rejected</button>
+                    <button class="kyc-filter" data-status="all">📋 All</button>
+                </div>
+            </div>
+
+            <div class="kyc-list" id="kycList">
+                <div class="empty">
+                    <div class="empty-icon">🛡️</div>
+                    <strong>No KYC requests</strong>
+                    <p>Requests will appear here when users submit them.</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- ==========================================
+             WITHDRAWALS TAB (NEW)
+        =========================================== -->
+
+        <div class="withdrawals-panel" id="withdrawalsPanel" style="display:none">
+
+            <div class="wd-stats">
+                <div class="wd-stat">
+                    <div class="wd-stat-icon">⏳</div>
+                    <div>
+                        <span>Pending</span>
+                        <strong id="wdStatPending">0</strong>
+                    </div>
+                </div>
+
+                <div class="wd-stat wd-stat-paid">
+                    <div class="wd-stat-icon">✅</div>
+                    <div>
+                        <span>Paid</span>
+                        <strong id="wdStatPaid">0</strong>
+                    </div>
+                </div>
+
+                <div class="wd-stat wd-stat-amount">
+                    <div class="wd-stat-icon">💰</div>
+                    <div>
+                        <span>Total Pending</span>
+                        <strong id="wdStatPendingAmount">$0</strong>
+                    </div>
+                </div>
+
+                <div class="wd-stat wd-stat-amount">
+                    <div class="wd-stat-icon">💵</div>
+                    <div>
+                        <span>Total Paid</span>
+                        <strong id="wdStatPaidAmount">$0</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wd-toolbar">
+                <div class="wd-filters" id="wdFilters">
+                    <button class="wd-filter active" data-status="pending">⏳ Pending</button>
+                    <button class="wd-filter" data-status="approved">✓ Approved</button>
+                    <button class="wd-filter" data-status="paid">✅ Paid</button>
+                    <button class="wd-filter" data-status="rejected">❌ Rejected</button>
+                    <button class="wd-filter" data-status="all">📋 All</button>
+                </div>
+            </div>
+
+            <div class="wd-list" id="wdList">
+                <div class="empty">
+                    <div class="empty-icon">💸</div>
+                    <strong>No withdrawal requests</strong>
+                    <p>Requests will appear here when users submit them.</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- ==========================================
+             SUPPORT TAB
+        =========================================== -->
+
+        <div class="support-panel" id="supportPanel" style="display:none">
+
+            <div class="support-filters" id="supportFilters">
+                <button class="support-filter active" data-status="all">All</button>
+                <button class="support-filter" data-status="open">🟢 Open</button>
+                <button class="support-filter" data-status="pending">🟡 Pending</button>
+                <button class="support-filter" data-status="resolved">✅ Resolved</button>
+            </div>
+
+            <div class="support-list" id="supportList">
+                <div class="empty">
+                    <div class="empty-icon">💬</div>
+                    <strong>No tickets yet</strong>
+                    <p>Support tickets will appear here.</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- ==========================================
+             PROMOTIONS TAB
+        =========================================== -->
+
+        <div class="promotions" id="promotionsPanel" style="display:none">
+
+            <div class="promo-card">
+                <div class="promo-card-header">
+                    <div>
+                        <div class="kicker">TOP BAR PROMOTION</div>
+                        <h3>Announcement Bar</h3>
+                        <p>A full-width bar at the top of the landing page.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="topbarEnabled">
+                        <span class="switch-slider"></span>
+                    </label>
+                </div>
+
+                <div class="promo-form">
+                    <div class="promo-field">
+                        <label for="topbarText">Message Text</label>
+                        <input type="text" id="topbarText" placeholder="🎉 FIRST ORDER — Use code">
+                    </div>
+
+                    <div class="promo-row">
+                        <div class="promo-field">
+                            <label for="topbarCode">Discount Code</label>
+                            <input type="text" id="topbarCode" placeholder="RISE10">
+                        </div>
+
+                        <div class="promo-field">
+                            <label for="topbarDiscount">Discount Label</label>
+                            <input type="text" id="topbarDiscount" placeholder="10% OFF">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="promo-actions">
+                    <span class="promo-status" id="topbarStatus"></span>
+                    <button type="button" class="save-btn" id="saveTopbarBtn">Save Top Bar</button>
+                </div>
+            </div>
+
+
+            <div class="promo-card">
+                <div class="promo-card-header">
+                    <div>
+                        <div class="kicker">POPUP PROMOTION</div>
+                        <h3>Special Offer Popup</h3>
+                        <p>A promotional popup that appears after a delay.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="popupEnabled">
+                        <span class="switch-slider"></span>
+                    </label>
+                </div>
+
+                <div class="promo-form">
+                    <div class="promo-field">
+                        <label for="popupTitle">Title</label>
+                        <input type="text" id="popupTitle" placeholder="🎁 Special Offer">
+                    </div>
+
+                    <div class="promo-field">
+                        <label for="popupDescription">Description</label>
+                        <input type="text" id="popupDescription" placeholder="Get 20% OFF your next challenge">
+                    </div>
+
+                    <div class="promo-row">
+                        <div class="promo-field">
+                            <label for="popupCode">Discount Code</label>
+                            <input type="text" id="popupCode" placeholder="RISE20">
+                        </div>
+
+                        <div class="promo-field">
+                            <label for="popupPercent">Discount %</label>
+                            <input type="number" id="popupPercent" placeholder="20" min="1" max="100">
+                        </div>
+
+                        <div class="promo-field">
+                            <label for="popupDelay">Delay (ms)</label>
+                            <input type="number" id="popupDelay" placeholder="3000" min="0" max="60000">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="promo-actions">
+                    <span class="promo-status" id="popupStatus"></span>
+                    <button type="button" class="save-btn" id="savePopupBtn">Save Popup</button>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- MODAL: ORDER DETAILS -->
+<div class="modal" id="orderModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div>
+                <div class="kicker">ORDER DETAILS</div>
+                <h2 id="modalOrderId">RF-000000</h2>
+            </div>
+            <button class="modal-close" id="modalClose">×</button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+        <div class="modal-footer" id="modalFooter"></div>
+    </div>
+</div>
+
+
+<!-- MODAL: APPROVE ORDER -->
+<div class="modal" id="approveModal">
+    <div class="modal-content modal-content-sm">
+        <div class="modal-header">
+            <div>
+                <div class="kicker">APPROVE ORDER</div>
+                <h2>Send MT Account</h2>
+            </div>
+            <button class="modal-close" id="approveModalClose">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="approve-info" id="approveInfo"></div>
+            <div class="approve-form">
+                <div class="form-row">
+                    <label for="mtLogin">MT Login</label>
+                    <input type="text" id="mtLogin" placeholder="e.g. 12345678" autocomplete="off">
+                </div>
+                <div class="form-row">
+                    <label for="mtPassword">MT Password</label>
+                    <input type="text" id="mtPassword" placeholder="e.g. AbCd1234" autocomplete="off">
+                </div>
+                <div class="form-row">
+                    <label for="mtServer">MT Server</label>
+                    <input type="text" id="mtServer" placeholder="e.g. RiseFunded-Live01" autocomplete="off">
+                </div>
+                <div class="form-row">
+                    <label for="mtBalance">Initial Balance</label>
+                    <input type="number" id="mtBalance" placeholder="5000" min="0">
+                </div>
+                <div class="approve-note">
+                    💡 These credentials will be shown to the trader in their dashboard.
+                </div>
+                <div class="approve-error" id="approveError"></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-cancel" id="approveCancelBtn">Cancel</button>
+            <button class="btn-approve" id="approveConfirmBtn">Approve & Send</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- MODAL: ACCOUNT DETAILS -->
+<div class="modal" id="accountModal">
+    <div class="modal-content modal-content-lg">
+
+        <div class="modal-header">
+            <div>
+                <div class="kicker">ACCOUNT DETAILS</div>
+                <h2 id="accountModalTitle">Account</h2>
+            </div>
+            <button class="modal-close" id="accountModalClose">×</button>
+        </div>
+
+        <div class="modal-body account-modal-body">
+            <div class="account-modal-user" id="accountModalUser"></div>
+            <div class="account-modal-stats" id="accountModalStats"></div>
+
+            <div class="account-modal-chart-wrapper">
+                <div class="account-modal-section-title">
+                    <div class="kicker">PERFORMANCE</div>
+                    <h3>Equity Curve</h3>
+                </div>
+                <div id="accountModalChart"></div>
+            </div>
+
+            <div class="account-modal-events" id="accountModalEvents"></div>
+
+            <div class="account-modal-calendar-wrapper">
+                <div class="account-modal-section-title">
+                    <div class="kicker">ACTIVITY</div>
+                    <h3>Daily P&L</h3>
+                </div>
+                <div class="calendar-wrapper" id="accountModalCalendar"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ==========================================
+     MODAL: REVIEW CERTIFICATE REQUEST
+=========================================== -->
+
+<div class="modal" id="certReviewModal">
+    <div class="modal-content modal-content-lg">
+
+        <div class="modal-header">
+            <div>
+                <div class="kicker">REVIEW CERTIFICATE REQUEST</div>
+                <h2 id="certReviewTitle">Certificate Request</h2>
+            </div>
+            <button class="modal-close" id="certReviewModalClose">×</button>
+        </div>
+
+        <div class="modal-body cert-review-body">
+
+            <div class="cert-review-user" id="certReviewUser"></div>
+
+            <div class="cert-review-form">
+
+                <div class="form-row">
+                    <label for="certReviewType">Certificate Type</label>
+                    <select id="certReviewType">
+                        <option value="phase1">Phase 1 Passed</option>
+                        <option value="phase2">Phase 2 Passed</option>
+                        <option value="funded">Funded Trader</option>
+                        <option value="payout">Payout Achieved</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <label for="certReviewAccountType">Account Type</label>
+                    <select id="certReviewAccountType">
+                        <option value="1step">1 Step</option>
+                        <option value="2step_standard">2 Step Standard</option>
+                        <option value="2step_pro">2 Step Pro</option>
+                        <option value="instant">Instant</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <label for="certReviewAccountSize">Account Size (USD)</label>
+                    <input type="number" id="certReviewAccountSize" placeholder="50000" min="0">
+                </div>
+
+                <div class="form-row" id="certReviewPayoutRow" style="display:none">
+                    <label for="certReviewPayoutAmount">Payout Amount (USD)</label>
+                    <input type="number" id="certReviewPayoutAmount" placeholder="2500" min="0">
+                </div>
+
+                <div class="approve-note">
+                    💡 After approval, the certificate will be issued and sent to the user's dashboard.
+                </div>
+
+                <div class="approve-error" id="certReviewError"></div>
+
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn-reject" id="certReviewRejectBtn">Reject</button>
+            <button class="btn-approve" id="certReviewApproveBtn">Approve & Issue</button>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ==========================================
+     MODAL: NEW CERTIFICATE (MANUAL)
+=========================================== -->
+
+<div class="modal" id="certNewModal">
+    <div class="modal-content modal-content-lg">
+
+        <div class="modal-header">
+            <div>
+                <div class="kicker">NEW CERTIFICATE</div>
+                <h2>Issue Certificate Manually</h2>
+            </div>
+            <button class="modal-close" id="certNewModalClose">×</button>
+        </div>
+
+        <div class="modal-body cert-review-body">
+
+            <div class="cert-review-form">
+
+                <div class="form-row">
+                    <label for="certNewUserSelect">Select User</label>
+                    <select id="certNewUserSelect">
+                        <option value="">— Choose a user —</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <label for="certNewType">Certificate Type</label>
+                    <select id="certNewType">
+                        <option value="phase1">Phase 1 Passed</option>
+                        <option value="phase2">Phase 2 Passed</option>
+                        <option value="funded">Funded Trader</option>
+                        <option value="payout">Payout Achieved</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <label for="certNewAccountType">Account Type</label>
+                    <select id="certNewAccountType">
+                        <option value="1step">1 Step</option>
+                        <option value="2step_standard">2 Step Standard</option>
+                        <option value="2step_pro">2 Step Pro</option>
+                        <option value="instant">Instant</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <label for="certNewAccountSize">Account Size (USD)</label>
+                    <input type="number" id="certNewAccountSize" placeholder="50000" min="0">
+                </div>
+
+                <div class="form-row" id="certNewPayoutRow" style="display:none">
+                    <label for="certNewPayoutAmount">Payout Amount (USD)</label>
+                    <input type="number" id="certNewPayoutAmount" placeholder="2500" min="0">
+                </div>
+
+                <div class="approve-note">
+                    💡 The certificate will be created immediately and shown in the user's dashboard.
+                </div>
+
+                <div class="approve-error" id="certNewError"></div>
+
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn-cancel" id="certNewCancelBtn">Cancel</button>
+            <button class="btn-approve" id="certNewCreateBtn">Create Certificate</button>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ==========================================
+     MODAL: CERTIFICATE PREVIEW (ADMIN)
+=========================================== -->
+
+<div class="modal" id="certPreviewAdminModal">
+    <div class="modal-content modal-content-lg">
+
+        <div class="modal-header">
+            <div>
+                <div class="kicker">CERTIFICATE PREVIEW</div>
+                <h2>Issued Certificate</h2>
+            </div>
+            <button class="modal-close" id="certPreviewAdminClose">×</button>
+        </div>
+
+        <div class="modal-body" style="align-items:center;">
+            <div class="cert-canvas-wrapper">
+                <div class="cert-canvas" id="certAdminCanvas"></div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn-cancel" id="certPreviewAdminCloseBtn">Close</button>
+            <button class="btn-approve" id="certPreviewAdminDownloadBtn">⬇ Download PDF</button>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ==========================================
+     KYC REVIEW MODAL (NEW)
+=========================================== -->
+
+<div class="modal" id="kycReviewModal">
+    <div class="modal-content modal-content-lg">
+
+        <div class="modal-header">
+            <div>
+                <div class="kicker">REVIEW KYC REQUEST</div>
+                <h2 id="kycReviewTitle">KYC Verification</h2>
+            </div>
+            <button class="modal-close" id="kycReviewModalClose">×</button>
+        </div>
+
+        <div class="modal-body kyc-review-body">
+
+            <div class="kyc-review-user" id="kycReviewUser"></div>
+
+            <div class="kyc-review-info">
+                <div class="kyc-review-info-title">📧 Documents were sent by email</div>
+                <div class="kyc-review-info-text">
+                    The user has submitted their details and sent their ID documents
+                    to <strong>risefunded.support@gmail.com</strong>. Check the inbox
+                    to review the attached files before approving.
+                </div>
+            </div>
+
+            <div class="kyc-review-form">
+
+                <div class="form-row">
+                    <label for="kycReviewFullName">Full Name</label>
+                    <input type="text" id="kycReviewFullName" readonly>
+                </div>
+
+                <div class="form-row">
+                    <label for="kycReviewDocumentType">Document Type</label>
+                    <input type="text" id="kycReviewDocumentType" readonly>
+                </div>
+
+                <div class="form-row">
+                    <label for="kycReviewCountry">Country</label>
+                    <input type="text" id="kycReviewCountry" readonly>
+                </div>
+
+                <div class="form-row">
+                    <label for="kycReviewDocumentNumber">Document Number</label>
+                    <input type="text" id="kycReviewDocumentNumber" readonly>
+                </div>
+
+                <div class="form-row" id="kycReviewRejectRow" style="display:none">
+                    <label for="kycReviewRejectReason">Rejection Reason</label>
+                    <textarea id="kycReviewRejectReason" rows="3" placeholder="e.g. Document is blurry, please re-upload..."></textarea>
+                </div>
+
+                <div class="approve-error" id="kycReviewError"></div>
+
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn-reject" id="kycReviewRejectBtn">Reject</button>
+            <button class="btn-approve" id="kycReviewApproveBtn">✓ Approve KYC</button>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ==========================================
+     WITHDRAWAL REVIEW MODAL (NEW)
+=========================================== -->
+
+<div class="modal" id="wdReviewModal">
+    <div class="modal-content modal-content-lg">
+
+        <div class="modal-header">
+            <div>
+                <div class="kicker">REVIEW WITHDRAWAL REQUEST</div>
+                <h2 id="wdReviewTitle">Withdrawal</h2>
+            </div>
+            <button class="modal-close" id="wdReviewModalClose">×</button>
+        </div>
+
+        <div class="modal-body wd-review-body">
+
+            <div class="wd-review-user" id="wdReviewUser"></div>
+
+            <div class="wd-review-amount">
+                <span>Requested Amount</span>
+                <strong id="wdReviewAmount">$0.00</strong>
+            </div>
+
+            <div class="wd-review-details">
+                <div class="wd-review-detail">
+                    <span>Network</span>
+                    <strong id="wdReviewNetwork">—</strong>
+                </div>
+
+                <div class="wd-review-detail">
+                    <span>Wallet Address</span>
+                    <strong id="wdReviewWallet">—</strong>
+                </div>
+
+                <div class="wd-review-detail" style="grid-column:1/-1">
+                    <span>Account ID</span>
+                    <strong id="wdReviewAccountId">—</strong>
+                </div>
+            </div>
+
+            <div class="wd-review-form">
+
+                <div class="form-row" id="wdReviewTxidRow">
+                    <label for="wdReviewTxid">Transaction Hash (TxID)</label>
+                    <input type="text" id="wdReviewTxid" placeholder="e.g. 0x1234...abcd" autocomplete="off">
+                </div>
+
+                <div class="form-row" id="wdReviewRejectRow" style="display:none">
+                    <label for="wdReviewRejectReason">Rejection Reason</label>
+                    <textarea id="wdReviewRejectReason" rows="3" placeholder="e.g. Invalid wallet address..."></textarea>
+                </div>
+
+                <div class="approve-error" id="wdReviewError"></div>
+
+            </div>
+
+        </div>
+
+        <div class="modal-footer" id="wdReviewFooter">
+            <button class="btn-reject" id="wdReviewRejectBtn">Reject</button>
+            <button class="btn-approve" id="wdReviewApproveBtn">✓ Approve</button>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ==========================================
+     CHAT PANEL
+=========================================== -->
+
+<div class="chat-panel" id="chatPanel">
+    <div class="chat-panel-inner">
+        <div class="chat-panel-header">
+            <button class="chat-back-btn" id="chatBackBtn">←</button>
+            <div class="chat-panel-title">
+                <strong id="chatPanelSubject">Ticket</strong>
+                <span class="chat-panel-status open" id="chatPanelStatus">Open</span>
+            </div>
+            <button class="chat-action-btn" id="chatResolveBtn" title="Mark as Resolved">✅</button>
+        </div>
+        <div class="chat-user-info" id="chatUserInfo"></div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input-row">
+            <textarea id="chatInput" placeholder="Type your reply..." rows="1"></textarea>
+            <button type="button" class="chat-send-btn" id="chatSendBtn">Send →</button>
+        </div>
+    </div>
+</div>
+
+
+<script type="module" src="admin.js"></script>
+
+</body>
+</html>

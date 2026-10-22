@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Verify Certificate — RISE FUNDED</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --purple: #5b2aa8;
+    --purple-2: #7442c8;
+    --purple-3: #9569df;
+    --navy: #102a56;
+    --navy-2: #1b4384;
+    --text: #111318;
+    --muted: #697080;
+    --white: #ffffff;
+    --soft: #f7f5fc;
+    --soft-2: #faf9fd;
+    --line: #e8e1f3;
+    --green: #20a86b;
+    --gold: #d7a83c;
+    --danger: #c53d4d;
+    --shadow: 0 20px 60px rgba(49, 31, 92, .10);
+    --shadow-2: 0 12px 35px rgba(49, 31, 92, .08);
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(116, 66, 200, .10), transparent 40%),
+        linear-gradient(180deg, #faf9fd 0%, #f4f0fa 100%);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a { text-decoration: none; color: inherit; }
+
+.verify-header {
+    padding: 24px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255,255,255,.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--line);
+}
+
+.verify-brand { display: flex; align-items: center; gap: 12px; }
+.verify-brand img { width: 42px; height: 42px; object-fit: contain; }
+
+.verify-brand-text { display: flex; flex-direction: column; line-height: 1; }
+.verify-brand-text strong { color: var(--navy); font-size: 16px; font-weight: 900; letter-spacing: 1px; }
+.verify-brand-text span { color: var(--purple); font-size: 10px; font-weight: 900; letter-spacing: 3px; margin-top: 5px; }
+
+.verify-header-link {
+    padding: 10px 18px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: white;
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 800;
+    transition: .2s;
+}
+.verify-header-link:hover { border-color: var(--purple); color: var(--purple); }
+
+.verify-main {
+    flex: 1;
+    padding: 50px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.verify-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    min-height: 400px;
+    text-align: center;
+}
+
+.verify-spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid rgba(116,66,200,.15);
+    border-top-color: var(--purple-2);
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.verify-loading p { color: var(--muted); font-size: 13px; font-weight: 600; }
+
+.verify-error {
+    max-width: 520px;
+    padding: 50px 40px;
+    border-radius: 24px;
+    background: white;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.verify-error-icon { font-size: 60px; margin-bottom: 16px; }
+.verify-error h1 { color: var(--navy); font-size: 24px; font-weight: 900; letter-spacing: -.5px; margin-bottom: 12px; }
+.verify-error p { color: var(--muted); font-size: 13px; line-height: 1.7; margin-bottom: 20px; }
+
+.verify-error-code {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: var(--soft);
+    border: 1px solid var(--line);
+    color: var(--purple);
+    font-family: "SF Mono", Monaco, monospace;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.verify-success-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #eaf7f0, #d9f0e3);
+    border: 1px solid #c9e9d7;
+    color: #1a7040;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: .5px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 22px rgba(32,168,107,.15);
+}
+.verify-success-badge-icon { font-size: 18px; }
+
+.verify-cert-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    padding: 20px 0;
+}
+
+/* =========================================================
+   CERTIFICATE CANVAS — Premium Design
+========================================================== */
+
+.cert-canvas {
+    width: 1000px;
+    height: 700px;
+    flex: none;
+    position: relative;
+    background: #fefeff;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(49,31,92,.25);
+    border-radius: 4px;
+}
+
+/* واترمارک لوگو */
+.cert-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 480px;
+    height: 480px;
+    opacity: 0.08;
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+}
+
+.cert-watermark img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* نوار بالا */
+.cert-bar-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(90deg, #5b2aa8, #d7a83c 50%, #5b2aa8);
+    z-index: 4;
+}
+
+/* نوار پایین */
+.cert-bar-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(90deg, #5b2aa8, #d7a83c 50%, #5b2aa8);
+    z-index: 4;
+}
+
+/* قاب */
+.cert-canvas-border {
+    position: absolute;
+    inset: 20px;
+    border: 3px solid var(--purple);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.cert-canvas-border::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid var(--gold);
+}
+
+/* گوشه‌ها */
+.cert-corner {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    border: 2px solid var(--gold);
+    z-index: 3;
+}
+
+.cert-corner.tl { top: 14px; left: 14px; border-right: 0; border-bottom: 0; }
+.cert-corner.tr { top: 14px; right: 14px; border-left: 0; border-bottom: 0; }
+.cert-corner.bl { bottom: 14px; left: 14px; border-right: 0; border-top: 0; }
+.cert-corner.br { bottom: 14px; right: 14px; border-left: 0; border-top: 0; }
+
+.cert-corner::after {
+    content: "◆";
+    position: absolute;
+    color: var(--gold);
+    font-size: 10px;
+    opacity: .5;
+}
+
+.cert-corner.tl::after { top: -6px; left: -6px; }
+.cert-corner.tr::after { top: -6px; right: -6px; }
+.cert-corner.bl::after { bottom: -6px; left: -6px; }
+.cert-corner.br::after { bottom: -6px; right: -6px; }
+
+/* محتوا */
+.cert-content {
+    position: absolute;
+    inset: 0;
+    padding: 60px 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 3;
+}
+
+/* برند */
+.cert-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.cert-brand img {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+}
+
+.cert-brand-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.cert-brand-text strong {
+    color: var(--purple);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+.cert-brand-text span {
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 5px;
+    margin-top: 6px;
+}
+
+/* عنوان Certificate */
+.cert-label {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.cert-main-title {
+    color: var(--purple);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 44px;
+    font-weight: 900;
+    letter-spacing: -.5px;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    text-shadow: 0 0 30px rgba(215,168,60,.20), 0 2px 4px rgba(91,42,168,.08);
+}
+
+/* خط تزئینی */
+.cert-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 14px 0;
+}
+
+.cert-divider::before,
+.cert-divider::after {
+    content: "";
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.cert-divider-icon {
+    color: var(--gold);
+    font-size: 14px;
+}
+
+/* متن */
+.cert-presented {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+/* اسم کاربر (Emboss) */
+.cert-name {
+    color: var(--navy);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 52px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    margin-bottom: 14px;
+    padding: 0 40px 12px;
+    border-bottom: 2px solid var(--gold);
+
+    text-shadow:
+        0 1px 0 rgba(255,255,255,.9),
+        0 2px 3px rgba(16,42,86,.15),
+        0 0 40px rgba(91,42,168,.08);
+}
+
+/* زیرنویس */
+.cert-subtext {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    margin-bottom: 16px;
+}
+
+/* عنوان دستاورد */
+.cert-achievement {
+    padding: 12px 36px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--purple), var(--purple-2));
+    color: white;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: .8px;
+    box-shadow:
+        0 8px 24px rgba(91,42,168,.30),
+        0 0 30px rgba(215,168,60,.15);
+    margin-bottom: 22px;
+    border: 1px solid rgba(215,168,60,.25);
+}
+
+/* جزئیات */
+.cert-meta {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 24px;
+}
+
+.cert-meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.cert-meta-item span {
+    color: var(--muted);
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.cert-meta-item strong {
+    color: var(--navy);
+    font-size: 17px;
+    font-weight: 900;
+}
+
+/* خط جداکننده */
+.cert-separator {
+    width: 100%;
+    max-width: 720px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 10px 0 22px;
+    opacity: .6;
+}
+
+/* پایین */
+.cert-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    gap: 30px;
+    margin-top: auto;
+    margin-bottom: 40px;
+    padding: 0 20px;
+}
+
+.cert-bottom-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+}
+
+.cert-bottom-label {
+    color: var(--muted);
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+}
+
+.cert-bottom-value {
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 900;
+    font-family: "SF Mono", Monaco, monospace;
+    letter-spacing: .3px;
+}
+
+/* QR Code */
+.cert-qr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 82px;
+    height: 82px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+.cert-qr canvas,
+.cert-qr img {
+    width: 82px;
+    height: 82px;
+    display: block;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    object-fit: contain;
+}
+
+/* مهر طلایی */
+.cert-seal {
+    width: 82px;
+    height: 82px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f5e7c4, #d7a83c 50%, #b8892a);
+    border-radius: 50%;
+    box-shadow:
+        0 6px 16px rgba(215,168,60,.35),
+        inset 0 0 0 2px rgba(255,255,255,.3),
+        inset 0 0 0 4px rgba(215,168,60,.6);
+    border: 2px dashed rgba(255,255,255,.5);
+}
+
+.cert-seal-inner {
+    width: 62px;
+    height: 62px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #d7a83c, #b8892a);
+    border-radius: 50%;
+    gap: 1px;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.3);
+}
+
+.cert-seal-inner img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: .95;
+}
+
+.cert-seal-text {
+    color: white;
+    font-size: 6px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    line-height: 1;
+    text-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+
+/* امضا */
+.cert-signature-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 220px;
+    text-align: center;
+}
+
+.cert-signature-img {
+    width: 100%;
+    height: auto;
+    max-height: 60px;
+    object-fit: contain;
+    margin-bottom: -18px;
+}
+
+.cert-signature-line-script {
+    width: 100%;
+    height: 1.5px;
+    background: var(--navy);
+    margin: 6px 0 8px 0;
+    border-radius: 1px;
+}
+
+.cert-signature-title {
+    font-family: "Inter", sans-serif;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+}
+
+
+/* Info Box */
+.verify-info-box {
+    max-width: 700px;
+    width: 100%;
+    margin-top: 30px;
+    padding: 20px 24px;
+    border-radius: 16px;
+    background: rgba(255,255,255,.7);
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.verify-info-icon {
+    width: 44px;
+    height: 44px;
+    flex: none;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: #f0e8fb;
+    color: var(--purple);
+    font-size: 20px;
+}
+
+.verify-info-box p { color: var(--muted); font-size: 12px; line-height: 1.6; }
+.verify-info-box strong { color: var(--navy); font-weight: 900; }
+
+.verify-footer {
+    padding: 26px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.verify-footer-links { display: flex; gap: 20px; }
+.verify-footer-links a:hover { color: var(--purple); }
+
+@media (max-width: 1100px) {
+    .verify-cert-wrapper { overflow-x: auto; justify-content: flex-start; }
+}
+
+@media (max-width: 768px) {
+    .verify-header { padding: 16px 20px; }
+    .verify-brand-text { display: none; }
+    .verify-main { padding: 30px 16px; }
+    .verify-success-badge { font-size: 11px; padding: 10px 18px; }
+    .cert-canvas { transform: scale(.75); transform-origin: top left; margin-bottom: -170px; }
+    .verify-cert-wrapper { height: 540px; }
+    .verify-footer { flex-direction: column; gap: 12px; text-align: center; }
+}
+
+@media (max-width: 500px) {
+    .cert-canvas { transform: scale(.42); transform-origin: top left; margin-bottom: -400px; }
+    .verify-cert-wrapper { height: 310px; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="verify-header">
+    <a href="index.html" class="verify-brand">
+        <img src="assets/logo.svg" alt="RISE FUNDED">
+        <div class="verify-brand-text">
+            <strong>RISE</strong>
+            <span>FUNDED</span>
+        </div>
+    </a>
+    <a href="index.html" class="verify-header-link">← Back to Home</a>
+</header>
+
+<main class="verify-main" id="verifyMain">
+    <div class="verify-loading" id="verifyLoading">
+        <div class="verify-spinner"></div>
+        <p>Verifying certificate...</p>
+    </div>
+</main>
+
+<footer class="verify-footer">
+    <span>© 2026 RISE FUNDED — All rights reserved.</span>
+    <div class="verify-footer-links">
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+        <a href="index.html#faq">FAQ</a>
+    </div>
+</footer>
+
+<script src="/qrcode-lib.js"></script>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyC0ecCQOl6gFEdXe34_xNIFdwcKiFziWfE",
+    authDomain: "rise-funded.firebaseapp.com",
+    projectId: "rise-funded",
+    storageBucket: "rise-funded.firebasestorage.app",
+    messagingSenderId: "409746033804",
+    appId: "1:409746033804:web:71fa279d7cbd6b5816bfa9"
+};
+
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
+
+const verifyMain = document.getElementById("verifyMain");
+
+const CERT_TYPES = {
+    phase1: { label: "Phase 1 Passed", icon: "①" },
+    phase2: { label: "Phase 2 Passed", icon: "②" },
+    funded: { label: "Funded Trader",  icon: "★" },
+    payout: { label: "Payout Achieved", icon: "💰" }
+};
+
+const ACCOUNT_TYPES_LABEL = {
+    "1step":          "1 Step",
+    "2step_standard": "2 Step Standard",
+    "2step_pro":      "2 Step Pro",
+    "instant":        "Instant"
+};
+
+function escapeHTML(value) {
+    return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+function formatCertDate(value) {
+    if (!value) return "—";
+    try {
+        let date;
+        if (value && typeof value.toDate === "function") {
+            date = value.toDate();
+        } else {
+            date = new Date(value);
+        }
+        return new Intl.DateTimeFormat("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        }).format(date);
+    } catch {
+        return "—";
+    }
+}
+
+function renderError(id, message) {
+    verifyMain.innerHTML = `
+        <div class="verify-error">
+            <div class="verify-error-icon">❌</div>
+            <h1>Certificate Not Found</h1>
+            <p>${escapeHTML(message || "We couldn't find a certificate with this verification ID.")}</p>
+            ${id ? `<div class="verify-error-code">${escapeHTML(id)}</div>` : ""}
+            <p style="font-size:11px;color:#8a909d;">
+                If you believe this is an error, please contact our support team.
+            </p>
+        </div>
+    `;
+}
+
+function renderCertificate(cert) {
+    const typeInfo = CERT_TYPES[cert.type] || { label: cert.title || "Certificate" };
+    const accountTypeLabel = cert.accountTypeLabel
+        || ACCOUNT_TYPES_LABEL[cert.accountType]
+        || "—";
+
+    const issueDate = formatCertDate(cert.issuedAt);
+
+    verifyMain.innerHTML = `
+        <div class="verify-success-badge">
+            <span class="verify-success-badge-icon">✅</span>
+            <span>VERIFIED AUTHENTIC CERTIFICATE</span>
+        </div>
+
+        <div class="verify-cert-wrapper">
+            <div class="cert-canvas">
+
+                <!-- نوار بالا -->
+                <div class="cert-bar-top"></div>
+
+                <!-- واترمارک لوگو -->
+                <div class="cert-watermark">
+                    <img src="assets/logo-purple.png" alt="">
+                </div>
+
+                <!-- قاب -->
+                <div class="cert-canvas-border"></div>
+
+                <!-- گوشه‌ها -->
+                <div class="cert-corner tl"></div>
+                <div class="cert-corner tr"></div>
+                <div class="cert-corner bl"></div>
+                <div class="cert-corner br"></div>
+
+                <!-- محتوا -->
+                <div class="cert-content">
+
+                    <div class="cert-brand">
+                        <img src="assets/logo-purple.png" alt="RISE FUNDED">
+                        <div class="cert-brand-text">
+                            <strong>RISE</strong>
+                            <span>FUNDED</span>
+                        </div>
+                    </div>
+
+                    <div class="cert-label">Certificate of Achievement</div>
+                    <div class="cert-main-title">${escapeHTML(typeInfo.label)}</div>
+
+                    <div class="cert-divider">
+                        <span class="cert-divider-icon">◆</span>
+                    </div>
+
+                    <div class="cert-presented">This certificate is proudly presented to</div>
+                    <div class="cert-name">${escapeHTML(cert.userName)}</div>
+                    <div class="cert-subtext">for successfully completing</div>
+                    <div class="cert-achievement">${escapeHTML(typeInfo.label)}</div>
+
+                    <div class="cert-meta">
+                        <div class="cert-meta-item">
+                            <span>Account Size</span>
+                            <strong>$${Number(cert.accountSize || 0).toLocaleString()}</strong>
+                        </div>
+                        <div class="cert-meta-item">
+                            <span>Plan</span>
+                            <strong>${escapeHTML(accountTypeLabel)}</strong>
+                        </div>
+                        ${cert.type === "payout" && cert.payoutAmount ? `
+                            <div class="cert-meta-item">
+                                <span>Payout</span>
+                                <strong>$${Number(cert.payoutAmount).toLocaleString()}</strong>
+                            </div>
+                        ` : ""}
+                    </div>
+
+                    <div class="cert-separator"></div>
+
+                    <div class="cert-bottom">
+
+                        <div class="cert-bottom-block">
+                            <div class="cert-bottom-label">Issue Date</div>
+                            <div class="cert-bottom-value">${escapeHTML(issueDate)}</div>
+                        </div>
+
+                        <div class="cert-bottom-block">
+                            <div class="cert-qr" id="verifyQrContainer"></div>
+                        </div>
+
+                       
+
+                        <div class="cert-bottom-block">
+                            <div class="cert-signature-block">
+                                <img src="assets/signature.png" alt="Signature" class="cert-signature-img">
+                                <div class="cert-signature-line-script"></div>
+                                <div class="cert-signature-title">CEO Of Rise Funded</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="cert-verify-id">
+                        Verification ID: <strong>${escapeHTML(cert.verificationId)}</strong>
+                    </div>
+
+                </div>
+
+                <!-- نوار پایین -->
+                <div class="cert-bar-bottom"></div>
+
+            </div>
+        </div>
+
+        <div class="verify-info-box">
+            <div class="verify-info-icon">ℹ️</div>
+            <p>
+                This certificate was issued by <strong>RISE FUNDED</strong>
+                on ${escapeHTML(issueDate)}. The verification ID
+                <strong>${escapeHTML(cert.verificationId)}</strong>
+                is registered in our secure database.
+            </p>
+        </div>
+    `;
+
+/* --- QR Code --- */
+const qrContainer = document.getElementById("verifyQrContainer")
+    || document.getElementById("certQrContainer");
+
+if (qrContainer && typeof qrcode !== "undefined") {
+    try {
+        qrContainer.innerHTML = "";
+
+        const qr = qrcode(0, 'M');
+        qr.addData(`https://rise-funded.web.app/verify.html?id=${cert.verificationId || cert.id}`);
+        qr.make();
+
+        const svgString = qr.createSvgTag({
+            scalable: true,
+            margin: 1,
+            cellSize: 4
+        });
+
+        /* --- Data URL به‌جای Blob --- */
+        const url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svgString);
+
+        const qrImg = new Image();
+        qrImg.alt = "QR Code";
+        qrImg.style.width  = "82px";
+        qrImg.style.height = "82px";
+        qrImg.style.display = "block";
+        qrImg.src = url;
+
+        qrContainer.appendChild(qrImg);
+
+    } catch (qrErr) {
+        console.error("QR error:", qrErr);
+    }
+}
+}
+
+async function verifyCertificate() {
+    const params = new URLSearchParams(window.location.search);
+    const verificationId = params.get("id");
+
+    if (!verificationId) {
+        renderError(null, "No verification ID provided. Please scan a valid QR code.");
+        return;
+    }
+
+    try {
+        const docRef = doc(db, "certificates_index", verificationId);
+        const snap   = await getDoc(docRef);
+
+        if (!snap.exists()) {
+            renderError(verificationId, "This verification ID does not exist.");
+            return;
+        }
+
+        const cert = snap.data();
+
+        if (cert.status === "revoked") {
+            renderError(verificationId, "This certificate has been revoked.");
+            return;
+        }
+
+        renderCertificate(cert);
+
+    } catch (err) {
+        console.error("Verify error:", err);
+        renderError(verificationId, "Error: " + err.message);
+    }
+}
+
+verifyCertificate();
+
+</script>
+
+</body>
+</html>

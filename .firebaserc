@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "rise-funded"
+  },
+  "targets": {
+    "rise-funded": {
+      "hosting": {
+        "rise-funded": [
+          "rise-funded"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

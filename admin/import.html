@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Import MT5 — RISE FUNDED Admin</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="admin.css">
+<link rel="stylesheet" href="import.css">
+
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+</head>
+
+<body>
+
+<!-- LOADING -->
+<div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p>Loading...</p>
+</div>
+
+
+<!-- ACCESS DENIED -->
+<div class="denied" id="denied" style="display:none">
+    <div class="denied-icon">🚫</div>
+    <h1>Access Denied</h1>
+    <p>You don't have admin permissions to view this page.</p>
+    <a href="../index.html" class="btn-primary">Back to Home</a>
+</div>
+
+
+<!-- MAIN -->
+<div class="admin" id="adminPanel" style="display:none">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <img src="../assets/logo.svg" alt="RISE FUNDED" class="brand-mark" />
+            <div>
+                <strong>RISE</strong>
+                <span>ADMIN</span>
+            </div>
+        </div>
+
+        <nav class="nav">
+            <a href="admin.html" class="nav-item">
+                <span>⏳</span> Orders
+            </a>
+            <a href="#" class="nav-item" id="supportNav" style="display:none">
+                <span>💬</span> Support
+            </a>
+            <a href="#" class="nav-item" id="promotionsNav" style="display:none">
+                <span>🎁</span> Promotions
+            </a>
+            <a href="import.html" class="nav-item active">
+                <span>📥</span> Import MT5
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="admin-info">
+                <div class="admin-avatar" id="adminAvatar">A</div>
+                <div>
+                    <strong id="adminName">Admin</strong>
+                    <span id="adminEmail">admin@rise-funded.com</span>
+                </div>
+            </div>
+            <button class="logout-btn" id="logoutBtn">
+                Logout
+            </button>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <!-- HEADER -->
+        <header class="topbar">
+            <div>
+                <div class="kicker">IMPORT</div>
+                <h1>Import MT5 Report</h1>
+            </div>
+            <a href="admin.html" class="refresh-btn">
+                ← Back to Orders
+            </a>
+        </header>
+
+
+        <!-- IMPORT CONTAINER -->
+        <div class="import-wrapper">
+
+            <!-- STEP 1: SELECT ACCOUNT -->
+            <div class="import-card">
+                <div class="import-card-header">
+                    <div class="import-step">STEP 1</div>
+                    <h3>Select Account</h3>
+                </div>
+
+                <div class="import-field">
+                    <label for="importAccountSelect">Choose Challenge Account</label>
+                    <select id="importAccountSelect">
+                        <option value="">Loading challenges...</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <!-- STEP 2: UPLOAD FILE -->
+            <div class="import-card">
+                <div class="import-card-header">
+                    <div class="import-step">STEP 2</div>
+                    <h3>Upload MT5 HTML Report</h3>
+                </div>
+
+                <div class="upload-area" id="uploadArea">
+                    <input type="file" id="fileInput" accept=".html,.htm" hidden>
+                    <div class="upload-icon">📄</div>
+                    <strong>Drag & Drop your MT5 HTML file</strong>
+                    <span>or</span>
+                    <button type="button" class="upload-btn" id="uploadBtn">
+                        Choose File
+                    </button>
+                    <div class="upload-note">
+                        MT5 → History → Right-click → Save as Report (HTML)
+                    </div>
+                </div>
+
+                <div class="file-info" id="fileInfo" style="display:none">
+                    <div class="file-icon">📄</div>
+                    <div class="file-details">
+                        <strong id="fileName">—</strong>
+                        <span id="fileSize">—</span>
+                    </div>
+                    <button type="button" class="file-remove" id="fileRemove">×</button>
+                </div>
+            </div>
+
+
+            <!-- STEP 3: PREVIEW & SAVE -->
+            <div class="import-card" id="previewCard" style="display:none">
+                <div class="import-card-header">
+                    <div class="import-step">STEP 3</div>
+                    <h3>Preview & Save</h3>
+                </div>
+
+                <!-- Summary -->
+                <div class="import-summary" id="importSummary">
+                    <!-- ساخته می‌شه با JS -->
+                </div>
+
+                <!-- Trades Table -->
+                <div class="import-trades-wrapper">
+                    <div class="import-section-title">
+                        <span>📊 Daily P&L</span>
+                        <button type="button" class="import-toggle" id="toggleDailyBtn">
+                            Show All
+                        </button>
+                    </div>
+
+                    <div class="import-daily-list" id="dailyList">
+                        <!-- ساخته می‌شه با JS -->
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="import-actions">
+                    <span class="import-status" id="importStatus"></span>
+                    <div class="import-buttons">
+                        <button type="button" class="btn-cancel" id="cancelImportBtn">
+                            Cancel
+                        </button>
+                        <button type="button" class="btn-approve" id="saveImportBtn">
+                            ✅ Save to Database
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- MT5 PARSE ERROR MODAL -->
+<div class="modal" id="errorModal">
+    <div class="modal-content modal-content-sm">
+        <div class="modal-header">
+            <div>
+                <div class="kicker">ERROR</div>
+                <h2>Parse Failed</h2>
+            </div>
+            <button class="modal-close" id="errorModalClose">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="import-error-box" id="errorMessage"></div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-cancel" id="errorModalOk">OK</button>
+        </div>
+    </div>
+</div>
+
+
+<script type="module" src="import.js"></script>
+
+</body>
+</html>

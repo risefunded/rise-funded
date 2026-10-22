@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>404 — Page Not Found | RISE FUNDED</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+    body{
+        font-family:"Inter",sans-serif;
+        background:
+            radial-gradient(
+                circle at 20% 10%,
+                rgba(116,66,200,.10),
+                transparent 30%
+            ),
+            radial-gradient(
+                circle at 80% 80%,
+                rgba(71,120,201,.08),
+                transparent 30%
+            ),
+            #faf9fd;
+        color:#111318;
+        min-height:100vh;
+
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+
+        padding:30px 20px;
+        text-align:center;
+    }
+
+    .logo{
+        display:inline-flex;
+        align-items:center;
+        gap:11px;
+
+        margin-bottom:40px;
+
+        font-weight:900;
+        font-size:19px;
+        letter-spacing:-.7px;
+    }
+
+    .logo img{
+        width:40px;
+        height:40px;
+        object-fit:contain;
+    }
+
+    .logo span{
+        color:#5b2aa8;
+    }
+
+    .error-code{
+        font-size:clamp(90px,16vw,160px);
+        font-weight:900;
+        line-height:1;
+        letter-spacing:-8px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #7442c8,
+                #5b2aa8,
+                #1b4384
+            );
+
+        -webkit-background-clip:text;
+        background-clip:text;
+        color:transparent;
+
+        margin-bottom:16px;
+    }
+
+    h1{
+        font-size:clamp(24px,4vw,36px);
+        font-weight:900;
+        letter-spacing:-1.3px;
+        color:#102a56;
+
+        margin-bottom:14px;
+    }
+
+    p{
+        max-width:480px;
+
+        color:#697080;
+        font-size:14px;
+        line-height:1.8;
+
+        margin-bottom:32px;
+    }
+
+    .buttons{
+        display:flex;
+        gap:12px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .btn{
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+
+        min-height:48px;
+        padding:0 24px;
+
+        border-radius:12px;
+
+        font-size:13px;
+        font-weight:800;
+
+        text-decoration:none;
+
+        transition:.25s ease;
+    }
+
+    .btn-primary{
+        color:white;
+
+        background:
+            linear-gradient(
+                135deg,
+                #7442c8,
+                #5b2aa8,
+                #1b4384
+            );
+
+        box-shadow:
+            0 10px 28px rgba(91,42,168,.25);
+    }
+
+    .btn-primary:hover{
+        transform:translateY(-2px);
+        box-shadow:0 15px 35px rgba(91,42,168,.35);
+    }
+
+    .btn-outline{
+        background:white;
+        border:1px solid #e8e1f3;
+        color:#102a56;
+    }
+
+    .btn-outline:hover{
+        border-color:#9569df;
+        color:#5b2aa8;
+    }
+
+    .footer{
+        margin-top:50px;
+
+        color:#9297a2;
+        font-size:11px;
+        font-weight:700;
+    }
+</style>
+</head>
+
+<body>
+
+    <a href="/" class="logo">
+        <img src="assets/logo.svg" alt="RISE FUNDED" />
+        <div>
+            RISE <span>FUNDED</span>
+        </div>
+    </a>
+
+    <div class="error-code">404</div>
+
+    <h1>Page Not Found</h1>
+
+    <p>
+        The page you're looking for doesn't exist or has been moved.
+        Check the URL or head back to the homepage.
+    </p>
+
+    <div class="buttons">
+        <a href="/" class="btn btn-primary">
+            Back to Home
+        </a>
+        <a href="/#challenges" class="btn btn-outline">
+            View Challenges
+        </a>
+    </div>
+
+    <div class="footer">
+        © 2026 RISE FUNDED. All rights reserved.
+    </div>
+
+</body>
+</html>

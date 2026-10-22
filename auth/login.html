@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | RISE FUNDED</title>
+
+    <meta
+        name="description"
+        content="Login to your RISE FUNDED trader account."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="auth.css">
+
+    <link rel="icon" type="image/svg+xml" href="../assets/logo-white.svg">
+</head>
+
+<body>
+
+<div class="auth-page">
+
+    <!-- Background -->
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+    <div class="grid-background"></div>
+
+    <!-- Back -->
+    <a href="../index.html" class="back-home">
+        <span>←</span>
+        Back to Home
+    </a>
+
+    <main class="auth-container">
+
+        <!-- Brand -->
+        <div class="brand">
+
+            <img
+                src="../assets/logo-white.svg"
+                alt="RISE FUNDED"
+                class="brand-mark"
+            />
+
+            <div class="brand-name">
+                RISE <span>FUNDED</span>
+            </div>
+
+        </div>
+
+        <!-- Card -->
+        <section class="auth-card">
+
+            <div class="auth-heading">
+
+                <div class="mini-badge">
+                    <span class="status-dot"></span>
+                    Secure Trader Access
+                </div>
+
+                <h1>
+                    Welcome <span>Back.</span>
+                </h1>
+
+                <p>
+                    Sign in to access your trader dashboard,
+                    account details and performance.
+                </p>
+
+            </div>
+
+            <!-- Error -->
+            <div id="authError" class="auth-message error-message"></div>
+
+            <!-- Success -->
+            <div id="authSuccess" class="auth-message success-message"></div>
+
+            <form id="loginForm" autocomplete="on">
+
+                <!-- Email -->
+                <div class="form-group">
+
+                    <label for="loginEmail">
+                        Email Address
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            ✉
+                        </span>
+
+                        <input
+                            type="email"
+                            id="loginEmail"
+                            name="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+
+                    <div class="label-row">
+
+                        <label for="loginPassword">
+                            Password
+                        </label>
+
+                        <a
+                            href="#"
+                            id="forgotPassword"
+                            class="forgot-link"
+                        >
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            🔒
+                        </span>
+
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-target="loginPassword"
+                            aria-label="Show password"
+                        >
+                            ◉
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- Remember -->
+                <div class="remember-row">
+
+                    <label class="checkbox-label">
+
+                        <input
+                            type="checkbox"
+                            id="rememberMe"
+                        >
+
+                        <span class="custom-checkbox"></span>
+
+                        <span>
+                            Remember me
+                        </span>
+
+                    </label>
+
+                </div>
+
+                <!-- Submit -->
+                <button
+                    type="submit"
+                    id="loginButton"
+                    class="primary-button"
+                >
+
+                    <span class="button-text">
+                        Login to Account
+                    </span>
+
+                    <span class="button-loader"></span>
+
+                    <span class="button-arrow">
+                        →
+                    </span>
+
+                </button>
+
+            </form>
+
+            <!-- Register -->
+            <div class="auth-switch">
+
+                <span>
+                    Don't have an account?
+                </span>
+
+                <a href="register.html">
+                    Create Account
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- Footer -->
+        <div class="auth-footer">
+
+            <span>
+                © 2026 RISE FUNDED
+            </span>
+
+            <span class="footer-separator">
+                •
+            </span>
+
+            <a href="#">
+                Terms
+            </a>
+
+            <a href="#">
+                Privacy
+            </a>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script type="module" src="auth.js"></script>
+
+</body>
+</html>
